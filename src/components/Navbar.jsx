@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Navbar.sass';
 
 export const Navbar = () => {
 	return (
 		<nav className="Navbar">
-			<h1>Ruki</h1>
+			<Link to="/">Ruki</Link>
 			<ul>
-				<li>Anime</li>
-				<li>Manga</li>
+				<li>
+					<Link to="/">Anime</Link>
+				</li>
+				<li>
+					<Link to="/">Manga</Link>
+				</li>
 			</ul>
 		</nav>
 	);
