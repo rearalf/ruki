@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { ListCard } from '../components/ListCard';
 import { Pagination } from '../components/Pagination';
-import { getSeason } from '../hooks/getData';
+import { getSeason } from '../services/getData';
 import { sortData } from '../utils/sortData';
 
 const Object_Anime = {

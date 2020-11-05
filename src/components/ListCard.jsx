@@ -14,6 +14,7 @@ export const ListCard = ({ list = [] }) => {
 						DateStart={list.airing_start}
 						Score={list.score}
 						key={list.mal_id}
+						id={list.mal_id}
 					/>
 				))}
 		</section>

@@ -7,6 +7,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx' ],
@@ -49,7 +50,8 @@ module.exports = {
 		maxAssetSize: 512000,
 	},
 	devServer: {
-		contentBase: './dist',
+		contentBase: path.join(__dirname, 'dist'),
+		historyApiFallback: true,
 		open: true,
 	},
 };

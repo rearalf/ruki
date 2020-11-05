@@ -1,22 +1,22 @@
 @import ../variables
 
 .PaginationButtons
-    margin: 1rem 0
+    margin: 2rem 0 3rem
     display: flex
     align-items: center
     justify-content: center
 
     & .PaginationButton
         border: none
-        background-color: $box-shadow
+        background-color: $color-btn-bg
         color: inherit
         padding: .8rem 1.5rem
         margin: 0 1rem
         border-radius: .5rem
         cursor: pointer
-        box-shadow: 0 4px 4px 0 $box-shadow
+        border: 1px solid $color-btn-border
+        box-shadow: $color-shadow-small
 
         &:hover
             opacity: .8
-            box-shadow: 0 8px 16px 0 $box-shadow
-            color: $third-color
+            box-shadow: $color-shadow-large
