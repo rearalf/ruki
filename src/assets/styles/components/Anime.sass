@@ -8,12 +8,15 @@
     background-color: $color-bg-primary
     box-shadow: $color-shadow-large
     border: 1px solid $color-border-primary
-    border-radius: 1rem
+    border-radius: $border-radius
     margin-bottom: 2rem
+    min-height: 300px
 
     & img
-        border-top-left-radius: 1rem
-        border-top-right-radius: 1rem
+        border-top-left-radius: $border-radius
+        border-top-right-radius: $border-radius
+        background-color: $color-bg-info
+        min-height: 300px
         width: 100%
 
     & .Info
@@ -53,7 +56,7 @@
     background-color: $color-bg-primary
     box-shadow: $color-shadow-large
     border: 1px solid $color-border-primary
-    border-radius: 1rem
+    border-radius: $border-radius
     padding: .8rem 1.2rem
     margin-bottom: 2rem
 
@@ -75,7 +78,7 @@
         & div
             margin-bottom: .5rem
 
-            & hr    
+            & hr
                 margin-bottom: .5rem
 
             & p
@@ -85,6 +88,9 @@
                 & span
                     font-size: .8em
 
+                & span.listInfo
+                    margin: .2rem .5rem
+
     & .show
         display: block
 
@@ -93,7 +99,7 @@
         grid-template-columns: 230px 1fr
 
         & img
-            border-top-left-radius: 1rem
-            border-bottom-left-radius: 1rem
+            border-top-left-radius: $border-radius
+            border-bottom-left-radius: $border-radius
             border-top-right-radius: 0
             height: 100%

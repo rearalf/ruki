@@ -17,3 +17,67 @@ export const modelsData = {
 	type: String,
 	url: String,
 };
+
+export const objeto_anime = {
+	request_cached: true,
+	request_cache_expiry: 0,
+	mal_id: 0,
+	url: '',
+	image_url: '',
+	trailer_url: '',
+	title: 'Name',
+	title_english: '',
+	title_japanese: '',
+	title_synonyms: [],
+	type: '',
+	source: '',
+	episodes: 0,
+	status: '',
+	airing: false,
+	aired: {
+		from: '2020-10-03T00:00:00+00:00',
+		to: '2020-10-03T00:00:00+00:00',
+		prop: {
+			from: {
+				day: 0,
+				month: 0,
+				year: 0,
+			},
+			to: {
+				day: 0,
+				month: 0,
+				year: 0,
+			},
+		},
+		string: '',
+	},
+	duration: '',
+	rating: '',
+	score: 0,
+	scored_by: 0,
+	rank: 0,
+	popularity: 0,
+	members: 0,
+	favorites: 0,
+	synopsis: '',
+	background: null,
+	premiered: '',
+	broadcast: '',
+	related: {
+		Adaptation: [],
+		'Side story': [],
+		Summary: [],
+	},
+	producers: [],
+	licensors: [],
+	studios: [],
+	genres: [],
+	opening_themes: [],
+	ending_themes: [],
+};
+
+export const Object_Anime = {
+	anime: [],
+	season_year: new Date().getFullYear(),
+	season_name: '',
+};

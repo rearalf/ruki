@@ -1,38 +1,24 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { ListCard } from '../components/ListCard';
 import { Pagination } from '../components/Pagination';
-import { getSeason } from '../services/getData';
-import { sortData } from '../utils/sortData';
-
-const Object_Anime = {
-	anime: [],
-	season_year: new Date().getFullYear(),
-	season_name: '',
-};
+import { AllAnime } from '../hooks/useGetAllAnime';
+import imgLoading from '../assets/static/loading.gif';
 
 export const Home = () => {
-	const [ AnimeSeason, setAnimeSeason ] = useState(Object_Anime);
-	const [ ListAnimes, setListAnimes ] = useState([]);
-	const [ Page, setPage ] = useState(0);
-
-	useEffect(() => {
-		getSeason().then(setAnimeSeason);
-	}, []);
-
-	useEffect(
-		() => {
-			const { arregloDeArreglos } = sortData({
-				data: AnimeSeason.anime,
-			});
-			setListAnimes(arregloDeArreglos);
-		},
-		[ AnimeSeason.anime ],
-	);
+	const { setPage, ListAnimes, Page, loading } = AllAnime();
 
 	return (
 		<Fragment>
-			<ListCard list={ListAnimes[Page]} />
-			<Pagination TotalAnime={ListAnimes.length} Page={Page} setPage={setPage} />
+			{loading ? (
+				<div className="ImgLoading">
+					<img src={imgLoading} alt="loading" />
+				</div>
+			) : (
+				<Fragment>
+					<ListCard list={ListAnimes[Page]} />
+					<Pagination TotalAnime={ListAnimes.length} Page={Page} setPage={setPage} />
+				</Fragment>
+			)}
 		</Fragment>
 	);
 };
