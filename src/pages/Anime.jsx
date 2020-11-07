@@ -6,6 +6,8 @@ import { Users } from '../components/Icons/Users';
 import { ArrowDown } from '../components/Icons/ArrowDown';
 import { useGetAnime } from '../hooks/usegetAnime';
 import imgLoading from '../assets/static/loading.gif';
+import { NotFound } from './NotFound';
+import { Layout } from '../components/Layout';
 import '../assets/styles/components/Anime.sass';
 
 export const Anime = () => {
@@ -18,12 +20,12 @@ export const Anime = () => {
 	};
 
 	return (
-		<Fragment>
+		<Layout>
 			{loading ? (
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />
 				</div>
-			) : (
+			) : Anime.aired ? (
 				<Fragment>
 					<section className="ShowData">
 						<img src={Anime.image_url} alt={Anime.title} />
@@ -58,11 +60,9 @@ export const Anime = () => {
 						</div>
 					</section>
 					<section className="moreInfo">
-						<div className="headerInfo">
+						<div className="headerInfo" onClick={() => showInfo('moreInfoDown')}>
 							<h1>More Info</h1>
-							<div onClick={() => showInfo('moreInfoDown')}>
-								<ArrowDown Width={30} />
-							</div>
+							<ArrowDown Width={30} />
 						</div>
 						<article className="moreInfoDown" id="moreInfoDown">
 							<div className="alternativeTitles">
@@ -141,7 +141,9 @@ export const Anime = () => {
 						</article>
 					</section>
 				</Fragment>
+			) : (
+				<NotFound />
 			)}
-		</Fragment>
+		</Layout>
 	);
 };

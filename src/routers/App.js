@@ -1,18 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Home } from '../pages/Home';
-import { Layout } from '../components/Layout';
 import { Anime } from '../pages/Anime';
+import { NotFound } from '../pages/NotFound';
 
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Layout>
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/anime/:id" component={Anime} />
-				</Switch>
-			</Layout>
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/anime/:id" component={Anime} />
+				<Route path="*" component={NotFound} status={404} />
+			</Switch>
 		</BrowserRouter>
 	);
 };

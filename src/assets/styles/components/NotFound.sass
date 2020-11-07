@@ -1,0 +1,35 @@
+@import ../variables
+
+.NotFound
+    min-height: 82vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    & h1
+        font-size: 4em
+        margin-bottom: 2rem
+
+        & .Error
+            display: inline-block
+            font-size: .7em
+            border-radius: 50%
+            padding: 0 15px
+            border: 3px solid $color-border-primary
+            animation: 1s gira infinite linear
+
+    & p
+        font-size: 1.05em
+        text-align: center
+
+    & a
+        color: $color-text-secondary
+        &:hover
+            text-decoration: underline
+
+@keyframes gira
+    0%
+        transform: rotate(0deg)
+    to
+        transform: rotate(1turn)

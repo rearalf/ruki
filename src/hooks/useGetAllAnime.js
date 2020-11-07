@@ -11,10 +11,14 @@ export function AllAnime(){
 
 	useEffect(() => {
 		setLoading(true);
-		getSeason().then(res => {
-			setAnimeSeason(res);
-			setLoading(false);
-		});
+		getSeason()
+			.then(res => {
+				setAnimeSeason(res);
+				setLoading(false);
+			})
+			.catch(res => {
+				setLoading(false);
+			});
 	}, []);
 
 	useEffect(
