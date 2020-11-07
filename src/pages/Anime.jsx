@@ -4,7 +4,7 @@ import { Star } from '../components/Icons/Star';
 import { Rank } from '../components/Icons/Rank';
 import { Users } from '../components/Icons/Users';
 import { ArrowDown } from '../components/Icons/ArrowDown';
-import { useGetAnime } from '../hooks/usegetAnime';
+import { useGetAnime } from '../hooks/useGetAnime';
 import imgLoading from '../assets/static/loading.gif';
 import { NotFound } from './NotFound';
 import { Layout } from '../components/Layout';
