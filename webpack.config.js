@@ -11,9 +11,9 @@ module.exports = {
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx' ],
-		/* alias: {
+		alias: {
 			'react-dom': '@hot-loader/react-dom',
-		}, */
+		},
 	},
 	module: {
 		rules: [
