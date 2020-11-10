@@ -8,6 +8,7 @@ import { useGetAnime } from '../hooks/useGetAnime';
 import imgLoading from '../assets/static/loading.gif';
 import { NotFound } from './NotFound';
 import { Layout } from '../components/Layout';
+import { Header } from '../components/Header';
 import '../assets/styles/components/Anime.sass';
 
 export const Anime = () => {
@@ -28,6 +29,7 @@ export const Anime = () => {
 
 	return (
 		<Layout>
+			<Header title={Anime.title} description={Anime.synopsis} />
 			{loading ? (
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />

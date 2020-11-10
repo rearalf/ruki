@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/NotFound.sass';
+import { Header } from '../components/Header';
 
 export const NotFound = () => {
 	return (
 		<div class="NotFound">
+			<Header title="Not Found" description="Content not found" />
 			<h1>
 				4 <p className="Error">?</p> 4
 			</h1>

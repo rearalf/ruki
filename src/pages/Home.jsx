@@ -3,6 +3,7 @@ import { ListCard } from '../components/ListCard';
 import { Pagination } from '../components/Pagination';
 import { AllAnime } from '../hooks/useGetAllAnime';
 import { Layout } from '../components/Layout';
+import { Header } from '../components/Header';
 import imgLoading from '../assets/static/loading.gif';
 
 export const Home = () => {
@@ -10,6 +11,7 @@ export const Home = () => {
 
 	return (
 		<Layout>
+			<Header title="Home" description="Home the ruki" />
 			{loading ? (
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />

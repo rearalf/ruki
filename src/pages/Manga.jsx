@@ -9,6 +9,7 @@ import imgLoading from '../assets/static/loading.gif';
 import { Layout } from '../components/Layout';
 import { NotFound } from './NotFound';
 import '../assets/styles/components/Anime.sass';
+import { Header } from '../components/Header';
 
 export const Manga = () => {
 	const { id } = useParams();
@@ -28,6 +29,7 @@ export const Manga = () => {
 
 	return (
 		<Layout>
+			<Header title={Manga.title} description={Manga.synopsis} />
 			{loading ? (
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />
