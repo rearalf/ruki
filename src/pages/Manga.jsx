@@ -4,15 +4,15 @@ import { Star } from '../components/Icons/Star';
 import { Rank } from '../components/Icons/Rank';
 import { Users } from '../components/Icons/Users';
 import { ArrowDown } from '../components/Icons/ArrowDown';
-import { useGetAnime } from '../hooks/useGetAnime';
+import { useGetManga } from '../hooks/useGetManga';
 import imgLoading from '../assets/static/loading.gif';
-import { NotFound } from './NotFound';
 import { Layout } from '../components/Layout';
+import { NotFound } from './NotFound';
 import '../assets/styles/components/Anime.sass';
 
-export const Anime = () => {
+export const Manga = () => {
 	const { id } = useParams();
-	const { Anime, loading } = useGetAnime({ id });
+	const { Manga, loading } = useGetManga({ id });
 
 	const showInfo = id => {
 		const info = document.getElementById(id);
@@ -32,10 +32,10 @@ export const Anime = () => {
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />
 				</div>
-			) : Anime.aired ? (
+			) : Manga.published ? (
 				<Fragment>
 					<section className="ShowData">
-						<img src={Anime.image_url} alt={Anime.title} />
+						<img src={Manga.image_url} alt={Manga.title} />
 						<div className="Info">
 							<div className="Header">
 								<div className="score HeaderInfo">
@@ -43,26 +43,26 @@ export const Anime = () => {
 										<Star />
 										Score:
 									</h4>
-									<p># {Anime.score}</p>
+									<p># {Manga.score}</p>
 								</div>
 								<div className="rank HeaderInfo">
 									<h4>
 										<Rank />
 										Rank:
 									</h4>
-									<p># {Anime.rank}</p>
+									<p># {Manga.rank}</p>
 								</div>
 								<div className="popularity HeaderInfo">
 									<h4>
 										<Users Title={'Popularity'} />
 										Popularity:
 									</h4>
-									<p># {Anime.popularity}</p>
+									<p># {Manga.popularity}</p>
 								</div>
 							</div>
 							<article className="InfoPrimary">
-								<h1>{Anime.title}</h1>
-								<p>{Anime.synopsis}</p>
+								<h1>{Manga.title}</h1>
+								<p>{Manga.synopsis}</p>
 							</article>
 						</div>
 					</section>
@@ -76,14 +76,14 @@ export const Anime = () => {
 								<h2>Alternative Titles</h2>
 								<hr />
 								<p>
-									English: <span>{Anime.title_english}</span>
+									English: <span>{Manga.title_english}</span>
 								</p>
 								<p>
-									Japanese: <span>{Anime.title_japanese}</span>
+									Japanese: <span>{Manga.title_japanese}</span>
 								</p>
 								<p>
 									Synonyms:
-									{Anime.title_synonyms.map((item, index) => (
+									{Manga.title_synonyms.map((item, index) => (
 										<span className="listInfo" key={index}>
 											{item},
 										</span>
@@ -94,94 +94,77 @@ export const Anime = () => {
 								<h2>Information</h2>
 								<hr />
 								<p>
-									Type: <span>{Anime.type}</span>
+									Type: <span>{Manga.type}</span>
 								</p>
 								<p>
-									Episodes: <span>{Anime.episodes}</span>
+									Volumes: <span>{Manga.volumes}</span>
 								</p>
 								<p>
-									Status: <span>{Anime.status}</span>
+									Status: <span>{Manga.status}</span>
 								</p>
 								<p>
-									Aired: <span>{Anime.aired.string}</span>
+									Chapters: <span>{Manga.chapters}</span>
 								</p>
 								<p>
-									Premiered: <span>{Anime.premiered}</span>
-								</p>
-								<p>
-									Broadcast: <span>{Anime.broadcast}</span>
-								</p>
-								<p>
-									Producers:
-									{Anime.producers.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-								<p>
-									Licensors:
-									{Anime.licensors.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-								<p>
-									Studios:
-									{Anime.studios.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-								<p>
-									Source: <span>{Anime.source}</span>
+									Published: <span>{Manga.published.string}</span>
 								</p>
 								<p>
 									Genres:
-									{Anime.genres.map((item, index) => (
+									{Manga.genres.map((item, index) => (
 										<span className="listInfo" key={index}>
 											{item.name}
 										</span>
 									))}
 								</p>
 								<p>
-									Duration: <span>{Anime.duration}</span>
+									Authors:{' '}
+									{Manga.authors.map((item, index) => (
+										<span className="listInfo" key={index}>
+											{item.name}
+										</span>
+									))}
 								</p>
 								<p>
-									Rating: <span>{Anime.rating}</span>
+									Serialization:
+									{Manga.serializations.map((item, index) => (
+										<span className="listInfo" key={index}>
+											{item.name}
+										</span>
+									))}
 								</p>
 							</div>
 						</article>
 					</section>
 					<section className="moreInfo">
 						<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
-							<h2>Related Anime</h2>
+							<h2>Related Manga</h2>
 							<ArrowDown Width={30} />
 						</div>
 						<hr />
 						<article className="moreInfoDown" id="moreInfoDown2">
 							<div className="alternativeTitles">
-								{Anime.related.Adaptation && (
+								{Manga.related.Adaptation && (
 									<p>
 										Adaptation:
-										{Replicdata(Anime.related.Adaptation)}
+										{Replicdata(Manga.related.Adaptation)}
 									</p>
 								)}
-								{Anime.related.Prequel && (
-									<p>Prequel: {Replicdata(Anime.related.Prequel)}</p>
-								)}
-								{Anime.related.Sequel && (
+								{Manga.related['Spin-off'] && (
 									<p>
-										Sequel:
-										{Replicdata(Anime.related.Sequel)}
+										Spin-off':
+										{Replicdata(Manga.related['Spin-off'])}
 									</p>
 								)}
-								{Anime.related['Alternative version'] && (
+								{Manga.related['Side story'] && (
+									<p>
+										Side story:
+										{Replicdata(Manga.related['Side story'])}
+									</p>
+								)}
+								{Manga.related['Alternative version'] && (
 									<p>
 										Alternative version:
-										{Replicdata(Anime.related['Alternative version'])}
+										{Replicdata(Manga.related['Alternative version'])}
 									</p>
 								)}
 							</div>

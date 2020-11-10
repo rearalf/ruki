@@ -41,7 +41,7 @@ export const SearchForm = () => {
 						{SearchAnime &&
 							SearchAnime.map(item => (
 								<Link
-									to={`/anime/${item.mal_id}`}
+									to={`/${typeSearch}/${item.mal_id}`}
 									onClick={() => setSearchAnime([])}
 									className="response"
 									key={item.mal_id}>

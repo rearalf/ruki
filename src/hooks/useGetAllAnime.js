@@ -35,5 +35,7 @@ export function AllAnime(){
 		Page,
 		ListAnimes,
 		loading,
+		season_name: AnimeSeason.season_name,
+		season_year: AnimeSeason.season_year,
 	};
 }

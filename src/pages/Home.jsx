@@ -6,7 +6,7 @@ import { Layout } from '../components/Layout';
 import imgLoading from '../assets/static/loading.gif';
 
 export const Home = () => {
-	const { setPage, ListAnimes, Page, loading } = AllAnime();
+	const { setPage, ListAnimes, Page, loading, season_name, season_year } = AllAnime();
 
 	return (
 		<Layout>
@@ -16,6 +16,7 @@ export const Home = () => {
 				</div>
 			) : ListAnimes.length ? (
 				<Fragment>
+					<h1>{`${season_name} ${season_year} Anime`}</h1>
 					<ListCard list={ListAnimes[Page]} />
 					<Pagination TotalAnime={ListAnimes.length} Page={Page} setPage={setPage} />
 				</Fragment>

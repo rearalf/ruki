@@ -22,10 +22,7 @@ export const Navbar = () => {
 				<div className="navbarCollapse" id="navbarCollapse">
 					<ul>
 						<li>
-							<Link to="/">Anime</Link>
-						</li>
-						<li>
-							<Link to="/">Manga</Link>
+							<Link to="/">Home</Link>
 						</li>
 					</ul>
 				</div>

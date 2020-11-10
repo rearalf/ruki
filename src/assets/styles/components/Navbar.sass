@@ -1,7 +1,6 @@
 @import ../variables
 
 .header_navbar
-    color: $color-text-inverse
     background-color: $color-header-bg
     margin-bottom: 2rem
 
@@ -16,6 +15,12 @@
             align-items: center
             width: 100%
             font-size: 1.1em
+
+            & a
+                color: $color-text-inverse
+
+                &:hover
+                    color: $color-header-text
 
             & .navToggle
                 cursor: pointer
@@ -41,9 +46,10 @@
 
                     & a
                         font-size: 1.1em
+                        color: $color-text-inverse
 
-                    &:hover
-                        color: $color-header-text
+                        &:hover
+                            color: $color-header-text
 
     & .containerSearch
         margin: 0 auto
