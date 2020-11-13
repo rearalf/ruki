@@ -24,6 +24,9 @@ export const Navbar = () => {
 						<li>
 							<Link to="/">Home</Link>
 						</li>
+						<li>
+							<Link to="/anime">Anime</Link>
+						</li>
 					</ul>
 				</div>
 			</nav>

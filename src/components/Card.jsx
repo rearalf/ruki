@@ -14,15 +14,21 @@ export const Card = ({ Title = '', Img = '', Score = 0, Genres = [], DateStart =
 						<span>{Score ? Score : 0}</span>
 					</div>
 				</div>
-				<div className="ContentInfoText">
-					<h1>{Title}</h1>
-					<h2>Fecha estreno: {new Date(DateStart).toDateString()}</h2>
-					<h3>Generos: </h3>
-					<div className="Genres">
-						{Genres.map(({ name }) => <span key={name}>{name}</span>)}
-					</div>
-				</div>
 			</Link>
+			<div className="ContentInfoText">
+				<Link to={`/anime/${id}`}>
+					<h1>{Title}</h1>
+				</Link>
+				<h2>Fecha estreno: {new Date(DateStart).toDateString()}</h2>
+				<h3>Generos: </h3>
+				<div className="Genres">
+					{Genres.map(({ name, type, mal_id }) => (
+						<Link to={`/${type}/genre/${mal_id}`} className="genre" key={mal_id}>
+							{name}
+						</Link>
+					))}
+				</div>
+			</div>
 		</article>
 	);
 };
