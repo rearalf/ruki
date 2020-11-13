@@ -47,13 +47,13 @@ export const Anime = () => {
 
 	return (
 		<Layout>
-			<Header title={Anime.title} description={Anime.synopsis} />
 			{loading ? (
 				<div className="ImgLoading">
 					<img src={imgLoading} alt="loading" />
 				</div>
 			) : Anime.aired ? (
 				<Fragment>
+				<Header title={Anime.title} description={Anime.synopsis} />
 					<section className="ShowData">
 						<img src={Anime.image_url} alt={Anime.title} />
 						<div className="Info">
