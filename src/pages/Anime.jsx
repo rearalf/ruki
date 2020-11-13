@@ -11,6 +11,11 @@ import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
 import '../assets/styles/components/Anime.sass';
 
+const objeto = {
+	normal: 'normal',
+	genre: 'genre',
+};
+
 export const Anime = () => {
 	const { id } = useParams();
 	const { Anime, loading } = useGetAnime({ id });
@@ -20,12 +25,25 @@ export const Anime = () => {
 		info.classList.toggle('show');
 	};
 
-	const Replicdata = items =>
-		items.map(item => (
-			<Link to={`/${item.type}/${item.mal_id}`} className="listInfo" key={item.mal_id}>
-				{item.name},
-			</Link>
-		));
+	const Replicdata = (items, type) => {
+		if (type === objeto.normal) {
+			return items.map(item => (
+				<Link to={`/${item.type}/${item.mal_id}`} className="listInfo" key={item.mal_id}>
+					{item.name},
+				</Link>
+			));
+		}
+		else if (type === objeto.genre) {
+			return items.map(item => (
+				<Link
+					to={`/${item.type}/${type}/${item.mal_id}`}
+					className="listInfo"
+					key={item.mal_id}>
+					{item.name},
+				</Link>
+			));
+		}
+	};
 
 	return (
 		<Layout>
@@ -142,11 +160,7 @@ export const Anime = () => {
 								</p>
 								<p>
 									Genres:
-									{Anime.genres.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
+									{Replicdata(Anime.genres, objeto.genre)}
 								</p>
 								<p>
 									Duration: <span>{Anime.duration}</span>
@@ -157,38 +171,46 @@ export const Anime = () => {
 							</div>
 						</article>
 					</section>
-					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
-							<h2>Related Anime</h2>
-							<ArrowDown Width={30} />
-						</div>
-						<hr />
-						<article className="moreInfoDown" id="moreInfoDown2">
-							<div className="alternativeTitles">
-								{Anime.related.Adaptation && (
-									<p>
-										Adaptation:
-										{Replicdata(Anime.related.Adaptation)}
-									</p>
-								)}
-								{Anime.related.Prequel && (
-									<p>Prequel: {Replicdata(Anime.related.Prequel)}</p>
-								)}
-								{Anime.related.Sequel && (
-									<p>
-										Sequel:
-										{Replicdata(Anime.related.Sequel)}
-									</p>
-								)}
-								{Anime.related['Alternative version'] && (
-									<p>
-										Alternative version:
-										{Replicdata(Anime.related['Alternative version'])}
-									</p>
-								)}
+					{Anime.related && (
+						<section className="moreInfo">
+							<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
+								<h2>Related Anime</h2>
+								<ArrowDown Width={30} />
 							</div>
-						</article>
-					</section>
+							<hr />
+							<article className="moreInfoDown" id="moreInfoDown2">
+								<div className="alternativeTitles">
+									{Anime.related.Adaptation && (
+										<p>
+											Adaptation:
+											{Replicdata(Anime.related.Adaptation, objeto.normal)}
+										</p>
+									)}
+									{Anime.related.Prequel && (
+										<p>
+											Prequel:{' '}
+											{Replicdata(Anime.related.Prequel, objeto.normal)}
+										</p>
+									)}
+									{Anime.related.Sequel && (
+										<p>
+											Sequel:
+											{Replicdata(Anime.related.Sequel, objeto.normal)}
+										</p>
+									)}
+									{Anime.related['Alternative version'] && (
+										<p>
+											Alternative version:
+											{Replicdata(
+												Anime.related['Alternative version'],
+												objeto.normal,
+											)}
+										</p>
+									)}
+								</div>
+							</article>
+						</section>
+					)}
 				</Fragment>
 			) : (
 				<NotFound />

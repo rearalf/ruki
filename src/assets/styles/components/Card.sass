@@ -34,7 +34,9 @@
 
     .ContentInfoText
         padding: 1rem
-        color: $color-text-primary
+
+        & h1
+            color: $color-text-primary
 
         & h2
             font-size: .8em
@@ -52,12 +54,13 @@
             flex-wrap: wrap
             gap: .5rem
 
-            & span
+            & .genre
                 background-color: $color-bg-secondary
                 padding: .3rem
                 border-radius: $border-radius
                 box-shadow: $color-shadow-small
                 border: 1px solid $color-border-primary
+                margin: .2rem;
 
 .ArticleAnime:hover
     box-shadow: $color-shadow-large

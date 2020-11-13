@@ -8,8 +8,8 @@ import { useGetManga } from '../hooks/useGetManga';
 import imgLoading from '../assets/static/loading.gif';
 import { Layout } from '../components/Layout';
 import { NotFound } from './NotFound';
-import '../assets/styles/components/Anime.sass';
 import { Header } from '../components/Header';
+import '../assets/styles/components/Anime.sass';
 
 export const Manga = () => {
 	const { id } = useParams();
@@ -137,41 +137,49 @@ export const Manga = () => {
 							</div>
 						</article>
 					</section>
-					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
-							<h2>Related Manga</h2>
-							<ArrowDown Width={30} />
-						</div>
-						<hr />
-						<article className="moreInfoDown" id="moreInfoDown2">
-							<div className="alternativeTitles">
-								{Manga.related.Adaptation && (
-									<p>
-										Adaptation:
-										{Replicdata(Manga.related.Adaptation)}
-									</p>
-								)}
-								{Manga.related['Spin-off'] && (
-									<p>
-										Spin-off':
-										{Replicdata(Manga.related['Spin-off'])}
-									</p>
-								)}
-								{Manga.related['Side story'] && (
-									<p>
-										Side story:
-										{Replicdata(Manga.related['Side story'])}
-									</p>
-								)}
-								{Manga.related['Alternative version'] && (
-									<p>
-										Alternative version:
-										{Replicdata(Manga.related['Alternative version'])}
-									</p>
-								)}
+					{Manga.related && (
+						<section className="moreInfo">
+							<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
+								<h2>Related Manga</h2>
+								<ArrowDown Width={30} />
 							</div>
-						</article>
-					</section>
+							<hr />
+							<article className="moreInfoDown" id="moreInfoDown2">
+								<div className="alternativeTitles">
+									{Manga.related.Adaptation && (
+										<p>
+											Adaptation:
+											{Replicdata(Manga.related.Adaptation)}
+										</p>
+									)}
+									{Manga.related['Spin-off'] && (
+										<p>
+											Spin-off':
+											{Replicdata(Manga.related['Spin-off'])}
+										</p>
+									)}
+									{Manga.related['Side story'] && (
+										<p>
+											Side story:
+											{Replicdata(Manga.related['Side story'])}
+										</p>
+									)}
+									{Manga.related['Alternative version'] && (
+										<p>
+											Alternative version:
+											{Replicdata(Manga.related['Alternative version'])}
+										</p>
+									)}
+									{Manga.related['Parent story'] && (
+										<p>
+											Parent story:
+											{Replicdata(Manga.related['Parent story'])}
+										</p>
+									)}
+								</div>
+							</article>
+						</section>
+					)}
 				</Fragment>
 			) : (
 				<NotFound />
