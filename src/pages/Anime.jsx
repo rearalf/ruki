@@ -14,6 +14,7 @@ import '../assets/styles/components/Anime.sass';
 const objeto = {
 	normal: 'normal',
 	genre: 'genre',
+	producer: 'producer',
 };
 
 export const Anime = () => {
@@ -28,7 +29,7 @@ export const Anime = () => {
 	const Replicdata = (items, type) => {
 		if (type === objeto.normal) {
 			return items.map(item => (
-				<Link to={`/${item.type}/${item.mal_id}`} className="listInfo" key={item.mal_id}>
+				<Link className="listInfo" to={`/${item.type}/${item.mal_id}`} key={item.mal_id}>
 					{item.name},
 				</Link>
 			));
@@ -36,8 +37,18 @@ export const Anime = () => {
 		else if (type === objeto.genre) {
 			return items.map(item => (
 				<Link
-					to={`/${item.type}/${type}/${item.mal_id}`}
 					className="listInfo"
+					to={`/${item.type}/${type}/${item.mal_id}`}
+					key={item.mal_id}>
+					{item.name},
+				</Link>
+			));
+		}
+		else if (type === objeto.producer) {
+			return items.map(item => (
+				<Link
+					className="listInfo"
+					to={`/${item.type}/${type}/${item.mal_id}`}
 					key={item.mal_id}>
 					{item.name},
 				</Link>
@@ -53,7 +64,7 @@ export const Anime = () => {
 				</div>
 			) : Anime.aired ? (
 				<Fragment>
-				<Header title={Anime.title} description={Anime.synopsis} />
+					<Header title={Anime.title} description={Anime.synopsis} />
 					<section className="ShowData">
 						<img src={Anime.image_url} alt={Anime.title} />
 						<div className="Info">
@@ -87,32 +98,42 @@ export const Anime = () => {
 						</div>
 					</section>
 					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('moreInfoDown')}>
-							<h1>More Info</h1>
+						<div className="headerInfo" onClick={() => showInfo('Alternative')}>
+							<h2>Alternative Titles</h2>
 							<ArrowDown Width={30} />
 						</div>
-						<article className="moreInfoDown" id="moreInfoDown">
+						<hr />
+						<article className="moreInfoDown" id="Alternative">
 							<div className="alternativeTitles">
-								<h2>Alternative Titles</h2>
-								<hr />
-								<p>
-									English: <span>{Anime.title_english}</span>
-								</p>
+								{Anime.title_english && (
+									<p>
+										English: <span>{Anime.title_english}</span>
+									</p>
+								)}
 								<p>
 									Japanese: <span>{Anime.title_japanese}</span>
 								</p>
-								<p>
-									Synonyms:
-									{Anime.title_synonyms.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item},
-										</span>
-									))}
-								</p>
+								{Anime.title_synonyms.length !== 0 && (
+									<p>
+										Synonyms:
+										{Anime.title_synonyms.map((item, index) => (
+											<span className="listInfo" key={index}>
+												{item},
+											</span>
+										))}
+									</p>
+								)}
 							</div>
+						</article>
+					</section>
+					<section className="moreInfo">
+						<div className="headerInfo" onClick={() => showInfo('Information')}>
+							<h2>Information</h2>
+							<ArrowDown Width={30} />
+						</div>
+						<hr />
+						<article className="moreInfoDown" id="Information">
 							<div className="information">
-								<h2>Information</h2>
-								<hr />
 								<p>
 									Type: <span>{Anime.type}</span>
 								</p>
@@ -133,27 +154,15 @@ export const Anime = () => {
 								</p>
 								<p>
 									Producers:
-									{Anime.producers.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
+									{Replicdata(Anime.producers, objeto.producer)}
 								</p>
 								<p>
 									Licensors:
-									{Anime.licensors.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
+									{Replicdata(Anime.licensors, objeto.producer)}
 								</p>
 								<p>
 									Studios:
-									{Anime.studios.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
+									{Replicdata(Anime.studios, objeto.producer)}
 								</p>
 								<p>
 									Source: <span>{Anime.source}</span>
@@ -171,14 +180,14 @@ export const Anime = () => {
 							</div>
 						</article>
 					</section>
-					{Anime.related && (
+					{Object.entries(Anime.related).length !== 0 && (
 						<section className="moreInfo">
-							<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
+							<div className="headerInfo" onClick={() => showInfo('Related')}>
 								<h2>Related Anime</h2>
 								<ArrowDown Width={30} />
 							</div>
 							<hr />
-							<article className="moreInfoDown" id="moreInfoDown2">
+							<article className="moreInfoDown" id="Related">
 								<div className="alternativeTitles">
 									{Anime.related.Adaptation && (
 										<p>

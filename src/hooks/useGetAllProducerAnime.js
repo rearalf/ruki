@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react';
-import { getAllGenresAnime } from '../services/getAllGenresAnime';
+import { getAllProducerAnime } from '../services/getAllProducerAnime';
 import { Objec_Genres } from '../utils/models';
 
-export function useGetAllGenreAnime({ id }){
+export function useGetAllProducerAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
 	const [ Animes, setAnimes ] = useState([]);
-	const [ Genre, setGenre ] = useState({
-		mal_url: new Object(Objec_Genres),
-		item_count: Number,
+	const [ Producer, setProducer ] = useState({
+		meta: new Object(Objec_Genres),
 	});
 
 	useEffect(
 		() => {
 			setLoading(true);
-			getAllGenresAnime({ id })
+			getAllProducerAnime({ id })
 				.then(res => {
 					setAnimes(res.anime);
-					setGenre({
-						mal_url: res.mal_url,
-						item_count: res.item_count,
+					setProducer({
+						meta: res.meta,
 					});
 					setLoading(false);
 				})
@@ -31,7 +29,7 @@ export function useGetAllGenreAnime({ id }){
 
 	return {
 		Animes,
-		Genre,
+		Producer,
 		Loading,
 	};
 }

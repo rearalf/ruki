@@ -2,18 +2,19 @@ import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ListCard } from '../components/ListCard';
-import { useGetAllGenreAnime } from '../hooks/useGetAllGenreAnime';
+import { useGetAllProducerAnime } from '../hooks/useGetAllProducerAnime';
 import { Header } from '../components/Header';
 import imgLoading from '../assets/static/loading.gif';
 
-export const AnimeGenre = () => {
+export const AnimeProducer = () => {
 	const { id } = useParams();
-	const { Animes, Genre, Loading } = useGetAllGenreAnime({ id });
+	const { Animes, Producer, Loading } = useGetAllProducerAnime({ id });
+
 	return (
 		<Layout>
 			<Header
-				title={Genre.mal_url.name}
-				description={`Find all ${Genre.mal_url.name} anime`}
+				title={Producer.meta.name}
+				description={`Find all ${Producer.meta.name} anime`}
 			/>
 			{Loading ? (
 				<div className="ImgLoading">
@@ -21,7 +22,7 @@ export const AnimeGenre = () => {
 				</div>
 			) : (
 				<Fragment>
-					<h1>{Genre.mal_url.name}</h1>
+					<h1>{Producer.meta.name}</h1>
 					<ListCard list={Animes} />
 				</Fragment>
 			)}

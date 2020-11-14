@@ -1,4 +1,6 @@
 import React from 'react';
+import { ArrowLeft } from './Icons/ArrowLeft';
+import { ArrowRight } from './Icons/ArrowRight';
 import '../assets/styles/components/Pagination.sass';
 
 export const Pagination = ({ TotalAnime, Page, setPage }) => {
@@ -20,10 +22,10 @@ export const Pagination = ({ TotalAnime, Page, setPage }) => {
 	return (
 		<div className="PaginationButtons">
 			<button className="PaginationButton" onClick={handlePrevious}>
-				Anterior
+				<ArrowLeft /> Anterior
 			</button>
 			<button className="PaginationButton" onClick={handleNext}>
-				Siguiente
+				Siguiente <ArrowRight />
 			</button>
 		</div>
 	);
