@@ -69,14 +69,13 @@ export const Manga = () => {
 						</div>
 					</section>
 					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('moreInfoDown')}>
-							<h1>More Info</h1>
+						<div className="headerInfo" onClick={() => showInfo('AlternativeTitles')}>
+							<h2>Alternative Titles</h2>
 							<ArrowDown Width={30} />
 						</div>
-						<article className="moreInfoDown" id="moreInfoDown">
+						<hr />
+						<article className="moreInfoDown" id="AlternativeTitles">
 							<div className="alternativeTitles">
-								<h2>Alternative Titles</h2>
-								<hr />
 								<p>
 									English: <span>{Manga.title_english}</span>
 								</p>
@@ -92,9 +91,16 @@ export const Manga = () => {
 									))}
 								</p>
 							</div>
+						</article>
+					</section>
+					<section className="moreInfo">
+						<div className="headerInfo" onClick={() => showInfo('Information')}>
+							<h2>Information</h2>
+							<ArrowDown Width={30} />
+						</div>
+						<hr />
+						<article className="moreInfoDown" id="Information">
 							<div className="information">
-								<h2>Information</h2>
-								<hr />
 								<p>
 									Type: <span>{Manga.type}</span>
 								</p>
@@ -139,12 +145,12 @@ export const Manga = () => {
 					</section>
 					{Manga.related && (
 						<section className="moreInfo">
-							<div className="headerInfo" onClick={() => showInfo('moreInfoDown2')}>
+							<div className="headerInfo" onClick={() => showInfo('RelatedManga')}>
 								<h2>Related Manga</h2>
 								<ArrowDown Width={30} />
 							</div>
 							<hr />
-							<article className="moreInfoDown" id="moreInfoDown2">
+							<article className="moreInfoDown" id="RelatedManga">
 								<div className="alternativeTitles">
 									{Manga.related.Adaptation && (
 										<p>

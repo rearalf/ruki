@@ -68,25 +68,57 @@
 
     & .moreInfoDown
         margin-top: 1rem
+        margin-bottom: .5rem
         height: auto
         overflow: hidden
         transition: height .5s
         display: none
 
-        & div
-            margin-bottom: .5rem
+        & .infoText
+            font-size: 1em
+            padding-left: 1rem
 
-            & hr
+            & .listInfo
+                font-size: .8em
+                margin: .2rem .5rem
+                display: inline-block
+
+        & .characters
+            display: grid
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+            gap: 1.5rem
+
+            & .character
+                display: grid
+                grid-template-columns: repeat(2,1fr)
+                border: 1px solid $color-border-primary
+
+                & .characterInfo
+                    display: flex
+                    align-items: center
+
+                    &.characterAnime
+                        & img
+                            justify-self: start
+
+                        & .infoCharacterAnime
+                            margin: 0 .5rem
+
+                    &.voiceActors
+                        & img
+                            margin-left: auto
+
+                & img
+                    width: 25%
+                    min-height: 100%
+        & .themes
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            padding-left: 1rem
+
+            & .theme
                 margin-bottom: .5rem
-
-            & p
-                font-size: 1em
-                padding-left: 1rem
-
-                & .listInfo
-                    font-size: .8em
-                    margin: .2rem .5rem
-                    display: inline-block
 
     & .show
         display: block

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getAnime } from '../services/getAnime';
+import { getAnime, getAnimeCharactersStaff } from '../services/getAnime';
 import { objeto_anime } from '../utils/models';
 
 export function useGetAnime({ id }){
 	const [ Anime, setAnime ] = useState(objeto_anime);
 	const [ loading, setLoading ] = useState(false);
+	const [ Characters, setCharacters ] = useState([]);
 
 	useEffect(
 		() => {
@@ -17,6 +18,10 @@ export function useGetAnime({ id }){
 				.catch(res => {
 					setLoading(false);
 				});
+
+			getAnimeCharactersStaff({ id }).then(res => {
+				setCharacters(res.characters);
+			});
 		},
 		[ id ],
 	);
@@ -24,5 +29,6 @@ export function useGetAnime({ id }){
 	return {
 		Anime,
 		loading,
+		Characters,
 	};
 }
