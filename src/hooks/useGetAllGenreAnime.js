@@ -4,6 +4,7 @@ import { Objec_Genres } from '../utils/models';
 
 export function useGetAllGenreAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
+	const [ Page, setPage ] = useState(1);
 	const [ Animes, setAnimes ] = useState([]);
 	const [ Genre, setGenre ] = useState({
 		mal_url: new Object(Objec_Genres),
@@ -29,9 +30,22 @@ export function useGetAllGenreAnime({ id }){
 		[ id ],
 	);
 
+	useEffect(
+		() => {
+			if (Page === 1) return;
+			getAllGenresAnime({ id, Page }).then(res => {
+				if (res.anime !== undefined) {
+					setAnimes(animes => animes.concat(res.anime));
+				}
+			});
+		},
+		[ Page, id ],
+	);
+
 	return {
 		Animes,
 		Genre,
 		Loading,
+		setPage,
 	};
 }

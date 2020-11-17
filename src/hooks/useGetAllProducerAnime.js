@@ -4,6 +4,7 @@ import { Objec_Genres } from '../utils/models';
 
 export function useGetAllProducerAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
+	const [ Page, setPage ] = useState(1);
 	const [ Animes, setAnimes ] = useState([]);
 	const [ Producer, setProducer ] = useState({
 		meta: new Object(Objec_Genres),
@@ -27,9 +28,23 @@ export function useGetAllProducerAnime({ id }){
 		[ id ],
 	);
 
+	useEffect(
+		() => {
+			if (Page === 1) return;
+			getAllProducerAnime({ id, Page }).then(res => {
+				if (res.anime !== undefined) {
+					setAnimes(animes => animes.concat(res.anime));
+				}
+			});
+		},
+		[ Page, id ],
+	);
+
 	return {
 		Animes,
 		Producer,
 		Loading,
+		setPage,
+		Page,
 	};
 }
