@@ -3,22 +3,17 @@ import { Link, useParams } from 'react-router-dom';
 import { Star } from '../components/Icons/Star';
 import { Rank } from '../components/Icons/Rank';
 import { Users } from '../components/Icons/Users';
-import { ArrowDown } from '../components/Icons/ArrowDown';
 import { useGetManga } from '../hooks/useGetManga';
 import imgLoading from '../assets/static/loading.gif';
 import { Layout } from '../components/Layout';
 import { NotFound } from './NotFound';
 import { Header } from '../components/Header';
+import { MoreInfo } from '../components/MoreInfo';
 import '../assets/styles/components/Anime.sass';
 
 export const Manga = () => {
 	const { id } = useParams();
 	const { Manga, loading } = useGetManga({ id });
-
-	const showInfo = id => {
-		const info = document.getElementById(id);
-		info.classList.toggle('show');
-	};
 
 	const Replicdata = items =>
 		items.map(item => (
@@ -68,123 +63,96 @@ export const Manga = () => {
 							</article>
 						</div>
 					</section>
-					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('AlternativeTitles')}>
-							<h2>Alternative Titles</h2>
-							<ArrowDown Width={30} />
-						</div>
-						<hr />
-						<article className="moreInfoDown" id="AlternativeTitles">
-							<div className="alternativeTitles">
-								<p>
-									English: <span>{Manga.title_english}</span>
-								</p>
-								<p>
-									Japanese: <span>{Manga.title_japanese}</span>
-								</p>
-								<p>
-									Synonyms:
-									{Manga.title_synonyms.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item},
-										</span>
-									))}
-								</p>
-							</div>
-						</article>
-					</section>
-					<section className="moreInfo">
-						<div className="headerInfo" onClick={() => showInfo('Information')}>
-							<h2>Information</h2>
-							<ArrowDown Width={30} />
-						</div>
-						<hr />
-						<article className="moreInfoDown" id="Information">
-							<div className="information">
-								<p>
-									Type: <span>{Manga.type}</span>
-								</p>
-								<p>
-									Volumes: <span>{Manga.volumes}</span>
-								</p>
-								<p>
-									Status: <span>{Manga.status}</span>
-								</p>
-								<p>
-									Chapters: <span>{Manga.chapters}</span>
-								</p>
-								<p>
-									Published: <span>{Manga.published.string}</span>
-								</p>
-								<p>
-									Genres:
-									{Manga.genres.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-								<p>
-									Authors:{' '}
-									{Manga.authors.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-								<p>
-									Serialization:
-									{Manga.serializations.map((item, index) => (
-										<span className="listInfo" key={index}>
-											{item.name}
-										</span>
-									))}
-								</p>
-							</div>
-						</article>
-					</section>
+					<MoreInfo title="Alternative Titles" id="AlternativeTitles">
+						<p className="infoText">
+							English: <span>{Manga.title_english}</span>
+						</p>
+						<p className="infoText">
+							Japanese: <span>{Manga.title_japanese}</span>
+						</p>
+						<p className="infoText">
+							Synonyms:
+							{Manga.title_synonyms.map((item, index) => (
+								<span className="listInfo" key={index}>
+									{item},
+								</span>
+							))}
+						</p>
+					</MoreInfo>
+					<MoreInfo title="Information" id="Information">
+						<p className="infoText">
+							Type: <span>{Manga.type}</span>
+						</p>
+						<p className="infoText">
+							Volumes: <span>{Manga.volumes}</span>
+						</p>
+						<p className="infoText">
+							Status: <span>{Manga.status}</span>
+						</p>
+						<p className="infoText">
+							Chapters: <span>{Manga.chapters}</span>
+						</p>
+						<p className="infoText">
+							Published: <span>{Manga.published.string}</span>
+						</p>
+						<p className="infoText">
+							Genres:
+							{Manga.genres.map((item, index) => (
+								<span className="listInfo" key={index}>
+									{item.name},
+								</span>
+							))}
+						</p>
+						<p className="infoText">
+							Authors:
+							{Manga.authors.map((item, index) => (
+								<span className="listInfo" key={index}>
+									{item.name}
+								</span>
+							))}
+						</p>
+						<p className="infoText">
+							Serialization:
+							{Manga.serializations.map((item, index) => (
+								<span className="listInfo" key={index}>
+									{item.name}
+								</span>
+							))}
+						</p>
+					</MoreInfo>
 					{Manga.related && (
-						<section className="moreInfo">
-							<div className="headerInfo" onClick={() => showInfo('RelatedManga')}>
-								<h2>Related Manga</h2>
-								<ArrowDown Width={30} />
-							</div>
-							<hr />
-							<article className="moreInfoDown" id="RelatedManga">
-								<div className="alternativeTitles">
-									{Manga.related.Adaptation && (
-										<p>
-											Adaptation:
-											{Replicdata(Manga.related.Adaptation)}
-										</p>
-									)}
-									{Manga.related['Spin-off'] && (
-										<p>
-											Spin-off':
-											{Replicdata(Manga.related['Spin-off'])}
-										</p>
-									)}
-									{Manga.related['Side story'] && (
-										<p>
-											Side story:
-											{Replicdata(Manga.related['Side story'])}
-										</p>
-									)}
-									{Manga.related['Alternative version'] && (
-										<p>
-											Alternative version:
-											{Replicdata(Manga.related['Alternative version'])}
-										</p>
-									)}
-									{Manga.related['Parent story'] && (
-										<p>
-											Parent story:
-											{Replicdata(Manga.related['Parent story'])}
-										</p>
-									)}
-								</div>
-							</article>
-						</section>
+						<MoreInfo title="Related Manga" id="RelatedManga">
+							{Manga.related.Adaptation && (
+								<p className="infoText">
+									Adaptation:
+									{Replicdata(Manga.related.Adaptation)}
+								</p>
+							)}
+							{Manga.related['Spin-off'] && (
+								<p className="infoText">
+									Spin-off':
+									{Replicdata(Manga.related['Spin-off'])}
+								</p>
+							)}
+							{Manga.related['Side story'] && (
+								<p className="infoText">
+									Side story:
+									{Replicdata(Manga.related['Side story'])}
+								</p>
+							)}
+							{Manga.related['Alternative version'] && (
+								<p className="infoText">
+									Alternative version:
+									{Replicdata(Manga.related['Alternative version'])}
+								</p>
+							)}
+							{Manga.related['Parent story'] && (
+								<p className="infoText">
+									Parent story:
+									{Replicdata(Manga.related['Parent story'])}
+								</p>
+							)}
+						</MoreInfo>
 					)}
 				</Fragment>
 			) : (

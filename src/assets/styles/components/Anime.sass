@@ -53,27 +53,7 @@
                 text-align: center
 
 .moreInfo
-    background-color: $color-bg-primary
-    box-shadow: $color-shadow-large
-    border: 1px solid $color-border-primary
-    border-radius: $border-radius
-    padding: .8rem 1.2rem
-    margin-bottom: 2rem
-
-    & .headerInfo
-        display: flex
-        justify-content: space-between
-        align-items: center
-        cursor: pointer
-
     & .moreInfoDown
-        margin-top: 1rem
-        margin-bottom: .5rem
-        height: auto
-        overflow: hidden
-        transition: height .5s
-        display: none
-
         & .infoText
             font-size: 1em
             padding-left: 1rem
@@ -82,7 +62,6 @@
                 font-size: .8em
                 margin: .2rem .5rem
                 display: inline-block
-
         & .characters
             display: grid
             gap: 1rem 1.5rem
@@ -112,7 +91,6 @@
                 & img
                     width: 25%
                     min-height: 100%
-
         & .themes
             display: flex
             justify-content: space-between
@@ -121,9 +99,6 @@
 
             & .theme
                 margin-bottom: .5rem
-
-    & .show
-        display: block
 
 @media screen and ( min-width: 600px )
     .ShowData

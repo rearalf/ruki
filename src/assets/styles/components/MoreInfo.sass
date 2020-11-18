@@ -1,0 +1,27 @@
+@import ../variables
+
+.moreInfo
+    background-color: $color-bg-primary
+    box-shadow: $color-shadow-large
+    border: 1px solid $color-border-primary
+    border-radius: $border-radius
+    padding: .8rem 1.2rem
+    margin-bottom: 2rem
+
+    & .headerInfo
+        display: flex
+        justify-content: space-between
+        align-items: center
+        cursor: pointer
+        margin-bottom: .2rem
+
+    & .moreInfoDown
+        margin-top: 1rem
+        margin-bottom: .5rem
+        height: auto
+        overflow: hidden
+        transition: height .5s
+        display: none
+
+        &.show
+            display: block

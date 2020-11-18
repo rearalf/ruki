@@ -7,6 +7,7 @@ import '../assets/styles/components/SearchPage.sass';
 import { ArrowDown } from '../components/Icons/ArrowDown';
 import { Genres } from '../utils/models';
 import { Header } from '../components/Header';
+import { MoreInfo } from '../components/MoreInfo';
 
 export const Search = () => {
 	const { name } = useParams();
@@ -60,28 +61,22 @@ export const Search = () => {
 						onChange={handleOnChange}
 					/>
 				</div>
-				<section className="moreInfo">
-					<div className="headerInfo" onClick={() => showInfo('Related')}>
-						<h4>Genre Filter</h4>
-						<ArrowDown Width={30} />
+				<MoreInfo id="Related" title="Genre Filter">
+					<div className="listGenres">
+						{Genres.map((item, index) => (
+							<div key={index + 1} className="genresInput">
+								<input
+									type="checkbox"
+									id={index + 1}
+									name={item}
+									onChange={handleCheck}
+								/>
+								<label htmlFor={index + 1}>{item}</label>
+							</div>
+						))}
 					</div>
-					<hr />
-					<div className="moreInfoDown" id="Related">
-						<div className="listGenres">
-							{Genres.map((item, index) => (
-								<div key={index + 1} className="genresInput">
-									<input
-										type="checkbox"
-										id={index + 1}
-										name={item}
-										onChange={handleCheck}
-									/>
-									<label htmlFor={index + 1}>{item}</label>
-								</div>
-							))}
-						</div>
-					</div>
-				</section>
+				</MoreInfo>
+				
 			</form>
 			<ListCard list={SearchAnime} />
 		</Layout>
