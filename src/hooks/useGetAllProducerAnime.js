@@ -4,6 +4,7 @@ import { Objec_Genres } from '../utils/models';
 
 export function useGetAllProducerAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
+	const [ loadingNextPage, setLoadingNextPage ] = useState(false);
 	const [ Page, setPage ] = useState(1);
 	const [ Animes, setAnimes ] = useState([]);
 	const [ Producer, setProducer ] = useState({
@@ -31,11 +32,20 @@ export function useGetAllProducerAnime({ id }){
 	useEffect(
 		() => {
 			if (Page === 1) return;
-			getAllProducerAnime({ id, Page }).then(res => {
-				if (res.anime !== undefined) {
-					setAnimes(animes => animes.concat(res.anime));
-				}
-			});
+			setLoadingNextPage(true);
+			getAllProducerAnime({ id, Page })
+				.then(res => {
+					if (res.anime !== undefined) {
+						setAnimes(animes => animes.concat(res.anime));
+						setLoadingNextPage(false);
+					}
+					else {
+						setLoadingNextPage(false);
+					}
+				})
+				.catch(res => {
+					setLoadingNextPage(false);
+				});
 		},
 		[ Page, id ],
 	);
@@ -45,6 +55,6 @@ export function useGetAllProducerAnime({ id }){
 		Producer,
 		Loading,
 		setPage,
-		Page,
+		loadingNextPage,
 	};
 }

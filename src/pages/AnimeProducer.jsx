@@ -10,7 +10,7 @@ import imgLoading from '../assets/static/loading.gif';
 
 export const AnimeProducer = () => {
 	const { id } = useParams();
-	const { Animes, Producer, Loading, setPage } = useGetAllProducerAnime({ id });
+	const { Animes, Producer, Loading, setPage, loadingNextPage } = useGetAllProducerAnime({ id });
 	const externalRef = useRef();
 	const { isNearScreen } = useNearScreen({
 		externalRef: Loading ? null : externalRef,
@@ -18,7 +18,7 @@ export const AnimeProducer = () => {
 	});
 
 	const debounceHandleNextPage = useCallback(
-		debounce(() => setPage(prevPage => prevPage + 1), 200),
+		debounce(() => setPage(prevPage => prevPage + 1), 1000),
 		[ setPage ],
 	);
 
@@ -43,6 +43,11 @@ export const AnimeProducer = () => {
 				<Fragment>
 					<h1>{Producer.meta.name}</h1>
 					<ListCard list={Animes} />
+					{loadingNextPage && (
+						<div className="ImgLoading">
+							<img src={imgLoading} alt="loading" />
+						</div>
+					)}
 					<div id="visor" ref={externalRef} />
 				</Fragment>
 			)}

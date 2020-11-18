@@ -263,6 +263,12 @@ export const Anime = () => {
 										{Replicdata(Anime.related['Side story'], objeto.normal)}
 									</p>
 								)}
+								{Anime.related['Full story'] && (
+									<p className="infoText">
+										Full story:
+										{Replicdata(Anime.related['Full story'], objeto.normal)}
+									</p>
+								)}
 							</div>
 						</section>
 					)}

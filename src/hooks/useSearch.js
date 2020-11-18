@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react';
 import { getSearch } from '../services/getSearch';
 
-export function useSearch({ title }){
-	const [ SearchAnime, setSearchAnime ] = useState({});
+export function useSearch({ title, genres = [] }){
+	const [ SearchAnime, setSearchAnime ] = useState([]);
 
 	useEffect(
 		() => {
-			getSearch({ title }).then(res => {
-				console.log(res);
-			});
+			if (!title) {
+				setSearchAnime([]);
+				return;
+			}
+
+			title.length >= 4
+				? getSearch({ title, limit: 25, genres }).then(res => {
+						setSearchAnime(res.results);
+					})
+				: setSearchAnime([]);
 		},
-		[ title ],
+		[ title, genres ],
 	);
 
 	return {

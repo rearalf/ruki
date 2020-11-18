@@ -7,6 +7,7 @@ import { Manga } from '../pages/Manga';
 import { Animes } from '../pages/Animes';
 import { AnimeGenre } from '../pages/AnimeGenre';
 import { AnimeProducer } from '../pages/AnimeProducer';
+import { Search } from '../pages/Search';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 				<Route exact path="/anime/:id" component={Anime} />
 				<Route exact path="/anime/genre/:id" component={AnimeGenre} />
 				<Route exact path="/anime/producer/:id" component={AnimeProducer} />
+				<Route exact path="/search/:name?" component={Search} />
 				<Route path="*" component={NotFound} status={404} />
 			</Switch>
 		</BrowserRouter>

@@ -4,6 +4,7 @@ import { Objec_Genres } from '../utils/models';
 
 export function useGetAllGenreAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
+	const [ loadingNextPage, setLoadingNextPage ] = useState(false);
 	const [ Page, setPage ] = useState(1);
 	const [ Animes, setAnimes ] = useState([]);
 	const [ Genre, setGenre ] = useState({
@@ -33,11 +34,20 @@ export function useGetAllGenreAnime({ id }){
 	useEffect(
 		() => {
 			if (Page === 1) return;
-			getAllGenresAnime({ id, Page }).then(res => {
-				if (res.anime !== undefined) {
-					setAnimes(animes => animes.concat(res.anime));
-				}
-			});
+			setLoadingNextPage(true);
+			getAllGenresAnime({ id, Page })
+				.then(res => {
+					if (res.anime !== undefined) {
+						setAnimes(animes => animes.concat(res.anime));
+						setLoadingNextPage(false);
+					}
+					else {
+						setLoadingNextPage(false);
+					}
+				})
+				.catch(res => {
+					setLoadingNextPage(false);
+				});
 		},
 		[ Page, id ],
 	);
@@ -47,5 +57,6 @@ export function useGetAllGenreAnime({ id }){
 		Genre,
 		Loading,
 		setPage,
+		loadingNextPage,
 	};
 }

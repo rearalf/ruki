@@ -10,7 +10,7 @@ import { useNearScreen } from '../hooks/useNearScreen';
 
 export const AnimeGenre = () => {
 	const { id } = useParams();
-	const { Animes, Genre, Loading, setPage } = useGetAllGenreAnime({ id });
+	const { Animes, Genre, Loading, setPage, loadingNextPage } = useGetAllGenreAnime({ id });
 	const externalRef = useRef();
 	const { isNearScreen } = useNearScreen({
 		externalRef: Loading ? null : externalRef,
@@ -43,6 +43,11 @@ export const AnimeGenre = () => {
 				<Fragment>
 					<h1>{Genre.mal_url.name}</h1>
 					<ListCard list={Animes} />
+					{loadingNextPage && (
+						<div className="ImgLoading">
+							<img src={imgLoading} alt="loading" />
+						</div>
+					)}
 					<div id="visor" ref={externalRef} />
 				</Fragment>
 			)}

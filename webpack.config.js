@@ -13,6 +13,8 @@ module.exports = {
 		extensions: [ '.js', '.jsx' ],
 		alias: {
 			'react-dom': '@hot-loader/react-dom',
+			'react-dom$': 'react-dom/profiling',
+			'scheduler/tracing': 'scheduler/tracing-profiling',
 		},
 	},
 	module: {

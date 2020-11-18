@@ -6,7 +6,10 @@ export async function getSearch({
 	rate = 'pg13',
 	limit = 5,
 	order_by = 'title',
+	genres = [],
 }){
-	const apiRL = `${API_URL}/search/${typeSearch}?q=${title}?rated=${rate}&limit=${limit}&order_by=${order_by}`;
+	const apiRL = `${API_URL}/search/${typeSearch}?q=${title}?rated=${rate}&limit=${limit}&order_by=${order_by}?genre=${genres.join(
+		'%2C',
+	)}`;
 	return await fetch(apiRL).then(res => res.json()).then(res => res);
 }

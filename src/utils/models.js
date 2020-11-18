@@ -53,6 +53,7 @@ export const objeto_anime = {
 		Character: [],
 		Other: [],
 		'Parent story': [],
+		'Full story': [],
 	},
 	producers: [],
 	licensors: [],
