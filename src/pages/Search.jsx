@@ -3,11 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { useSearch } from '../hooks/useSearch';
 import { ListCard } from '../components/ListCard';
-import '../assets/styles/components/SearchPage.sass';
-import { ArrowDown } from '../components/Icons/ArrowDown';
 import { Genres } from '../utils/models';
 import { Header } from '../components/Header';
 import { MoreInfo } from '../components/MoreInfo';
+import '../assets/styles/components/SearchPage.sass';
 
 export const Search = () => {
 	const { name } = useParams();

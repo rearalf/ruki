@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BurgerBars } from './Icons/Bars';
 import { SearchForm } from './SearchForm';
+import ContextUser from '../context/user';
+import { SignOut } from '../utils/firebase/Auth';
 import '../assets/styles/components/Navbar.sass';
 
 export const Navbar = () => {
+	const User = useContext(ContextUser);
+
 	const Toggle = () => {
 		const navbarCollapse = document.getElementById('navbarCollapse');
 		navbarCollapse.classList.toggle('show');
@@ -27,6 +31,17 @@ export const Navbar = () => {
 						<li>
 							<Link to="/anime">Anime</Link>
 						</li>
+						{User === null ? (
+							<li>
+								<Link to="/sign">Sign</Link>
+							</li>
+						) : (
+							<li>
+								<Link onClick={SignOut} to="/">
+									Logout
+								</Link>
+							</li>
+						)}
 					</ul>
 				</div>
 			</nav>

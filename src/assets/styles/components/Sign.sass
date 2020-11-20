@@ -1,0 +1,61 @@
+@import ../variables
+
+.formSign
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 70vh
+    position: relative
+
+    & .changeSign
+        position: absolute
+        top: 0
+        right: 1.5rem
+        padding: .5rem .8rem
+        border-radius: $border-radius
+        background-color: $color-btn-bg
+        color: $color-btn-text
+        box-shadow: $color-btn-shadow
+        border: 1px solid $color-btn-border
+        font-size: .8em
+        cursor: pointer
+        display: flex
+        align-items: center
+
+        &:hover
+            background-color: $color-btn-hover-bg
+            border: 1px solid $color-btn-focus-border
+
+        & svg
+            margin-left: .2rem
+
+    & .form
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 75%
+
+        & h1
+            margin-bottom: 1rem
+
+        & input
+            border: none
+            padding: .5rem .8rem
+            border-radius: $border-radius
+            margin-bottom: 1rem
+            box-shadow: $color-shadow-medium
+            width: 100%
+
+        & button
+            padding: .5rem .8rem
+            border-radius: $border-radius
+            background-color: $color-btn-bg
+            color: $color-btn-text
+            box-shadow: $color-btn-shadow
+            border: 1px solid $color-btn-border
+            cursor: pointer
+            font-size: .9em
+
+            &:hover
+                background-color: $color-btn-hover-bg
+                border: 1px solid $color-btn-focus-border
