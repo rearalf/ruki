@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-	apiKey: 'AIzaSyD21BapKa9zX9b809NsJlqjit9G80rHPDY',
+	apiKey: process.env.API_KEY_FIREBASE,
 	authDomain: 'ruki-anime.firebaseapp.com',
 	databaseURL: 'https://ruki-anime.firebaseio.com',
 	projectId: 'ruki-anime',

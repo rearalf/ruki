@@ -30,6 +30,8 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.12.5",
+		"dotenv": "^8.2.0",
+		"dotenv-webpack": "^5.1.0",
 		"firebase": "^8.0.2",
 		"just-debounce-it": "^1.1.0",
 		"react": "^17.0.1",
