@@ -10,6 +10,7 @@ import { AnimeProducer } from '../pages/AnimeProducer';
 import { Search } from '../pages/Search';
 import { Sign } from '../pages/Sign';
 import { UserContextProvider } from '../context/user';
+import { WatchedAnimes } from '../pages/WatchedAnimes';
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 					<Route exact path="/manga/:id" component={Manga} />
 					<Route exact path="/anime" component={Animes} />
 					<Route exact path="/anime/:id" component={Anime} />
+					<Route exact path="/watched" component={WatchedAnimes} />
 					<Route exact path="/anime/genre/:id" component={AnimeGenre} />
 					<Route exact path="/anime/producer/:id" component={AnimeProducer} />
 					<Route exact path="/search/:name?" component={Search} />

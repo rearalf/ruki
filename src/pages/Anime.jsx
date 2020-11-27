@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Star } from '../components/Icons/Star';
 import { Rank } from '../components/Icons/Rank';
@@ -9,6 +9,10 @@ import { NotFound } from './NotFound';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
 import { MoreInfo } from '../components/MoreInfo';
+import ContextUser from '../context/user';
+import { AllWatchedAnimes } from '../services/addWatchedAnime';
+import { WatchedAnime } from '../services/WatchedAnime';
+import { DeleteWatchedAnime } from '../services/deleteWatchedAnime';
 import '../assets/styles/components/Anime.sass';
 
 const objeto = {
@@ -18,7 +22,9 @@ const objeto = {
 };
 
 export const Anime = () => {
+	const User = useContext(ContextUser);
 	const { id } = useParams();
+	const [ Watched, setWatched ] = useState(false);
 	const { Anime, loading, Characters } = useGetAnime({ id });
 
 	const Replicdata = (items, type) => {
@@ -68,6 +74,43 @@ export const Anime = () => {
 		return null;
 	};
 
+	const handleAddWatched = () => {
+		AllWatchedAnimes({
+			id_user: User.uid,
+			mal_id: Anime.mal_id,
+			image_url: Anime.image_url,
+			title: Anime.title,
+			type: Anime.type,
+			score: Anime.score,
+			genres: Anime.genres,
+		}).then(() => {
+			setWatched(!Watched);
+		});
+	};
+
+	const handleDeleteWatched = () => {
+		DeleteWatchedAnime({
+			id_user: User.uid,
+			mal_id: Anime.mal_id,
+		}).then(() => {
+			setWatched(!Watched);
+		});
+	};
+
+	useEffect(
+		() => {
+			User &&
+				WatchedAnime({
+					id_user: User.uid,
+					mal_id: Anime.mal_id,
+				}).then(({ found }) => {
+					console.log(found);
+					setWatched(found);
+				});
+		},
+		[ id, User ],
+	);
+
 	return (
 		<Layout>
 			{loading ? (
@@ -77,6 +120,15 @@ export const Anime = () => {
 			) : Anime.aired ? (
 				<Fragment>
 					<Header title={Anime.title} description={Anime.synopsis} />
+					{User && (
+						<Fragment>
+							{Watched ? (
+								<button onClick={handleDeleteWatched}>Deleted Watched</button>
+							) : (
+								<button onClick={handleAddWatched}>Add Watched</button>
+							)}
+						</Fragment>
+					)}
 					<section className="ShowData">
 						<img src={Anime.image_url} alt={Anime.title} />
 						<div className="Info">

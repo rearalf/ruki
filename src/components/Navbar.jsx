@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BurgerBars } from './Icons/Bars';
 import { SearchForm } from './SearchForm';
@@ -36,11 +36,16 @@ export const Navbar = () => {
 								<Link to="/sign">Sign</Link>
 							</li>
 						) : (
-							<li>
-								<Link onClick={SignOut} to="/">
-									Logout
-								</Link>
-							</li>
+							<Fragment>
+								<li>
+									<Link to="/watched">Watched</Link>
+								</li>
+								<li>
+									<Link onClick={SignOut} to="/">
+										Logout
+									</Link>
+								</li>
+							</Fragment>
 						)}
 					</ul>
 				</div>
