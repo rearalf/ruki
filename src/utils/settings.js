@@ -16,7 +16,12 @@ export function getDate(){
 	else if (CurrentMonthNumber >= 9 && CurrentMonthNumber <= 11) {
 		season = 'fall';
 	}
-
+	if (CurrentMonthNumber === 12) {
+		return {
+			CurrentSeason: season,
+			CurrentYear: f.getFullYear() + 1,
+		};
+	}
 	return {
 		CurrentSeason: season,
 		CurrentYear: f.getFullYear(),
