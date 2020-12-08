@@ -1,3 +1,4 @@
+import { API_RUKI_BACKEND } from '../settings';
 import { auth } from './firebaseConfig';
 
 const mapUserFromFirebaseAuthToUser = user => {
@@ -65,7 +66,7 @@ export const SignOut = () => {
 
 const LogInApi = user => {
 	const { email, uid } = user.user;
-	const API = `${process.env.API_RUKI_BACKEND}/api/user/lognin`;
+	const API = `${API_RUKI_BACKEND}/api/user/lognin`;
 	fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({ email, id_user: uid }),
@@ -85,7 +86,7 @@ const LogInApi = user => {
 
 const SignUpApi = user => {
 	const { email, uid } = user.user;
-	const API = `${process.env.API_RUKI_BACKEND}/api/user/signup`;
+	const API = `${API_RUKI_BACKEND}/api/user/signup`;
 	fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({ email, id_user: uid }),

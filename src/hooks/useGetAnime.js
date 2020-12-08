@@ -6,6 +6,7 @@ export function useGetAnime({ id }){
 	const [ Anime, setAnime ] = useState(objeto_anime);
 	const [ loading, setLoading ] = useState(false);
 	const [ Characters, setCharacters ] = useState([]);
+	const [ Watched, setWatched ] = useState(false);
 
 	useEffect(
 		() => {
@@ -30,5 +31,7 @@ export function useGetAnime({ id }){
 		Anime,
 		loading,
 		Characters,
+		Watched,
+		setWatched,
 	};
 }

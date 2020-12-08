@@ -1,4 +1,6 @@
-export const API_URL = process.env.API_JIKAN;
+export const API_URL = 'https://api.jikan.moe/v3';
+
+export const API_RUKI_BACKEND = 'https://ruki-anime-backend.herokuapp.com';
 
 export function getDate(){
 	const f = new Date();

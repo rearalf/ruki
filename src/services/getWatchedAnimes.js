@@ -1,5 +1,7 @@
+import { API_RUKI_BACKEND } from "../utils/settings";
+
 export const AllWatchedAnimes = ({ id_user = '' }) => {
-	const API = `${process.env.API_RUKI_BACKEND}/api/anime/${id_user}`;
+	const API = `${API_RUKI_BACKEND}/api/anime/${id_user}`;
 	const myHeaders = new Headers({
 		'Content-Type': 'application/json',
 		authorization: localStorage.getItem('token'),

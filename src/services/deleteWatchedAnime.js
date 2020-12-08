@@ -1,5 +1,7 @@
+import { API_RUKI_BACKEND } from '../utils/settings';
+
 export const DeleteWatchedAnime = ({ id_user, mal_id }) => {
-	const API = `${process.env.API_RUKI_BACKEND}/api/anime/`;
+	const API = `${API_RUKI_BACKEND}/api/anime/`;
 	const myHeaders = new Headers({
 		'Content-Type': 'application/json',
 		authorization: localStorage.getItem('token'),
@@ -13,7 +15,9 @@ export const DeleteWatchedAnime = ({ id_user, mal_id }) => {
 		.then(res => res.json())
 		.catch(error => console.error('Error:', error))
 		.then(response => {
-			console.log(response);
-			return response;
+			return {
+				message: response.message,
+				data: response.data,
+			};
 		});
 };

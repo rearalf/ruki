@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Star } from '../components/Icons/Star';
 import { Rank } from '../components/Icons/Rank';
@@ -10,7 +10,7 @@ import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
 import { MoreInfo } from '../components/MoreInfo';
 import ContextUser from '../context/user';
-import { AllWatchedAnimes } from '../services/addWatchedAnime';
+import { AddWatchedAnime } from '../services/addWatchedAnime';
 import { WatchedAnime } from '../services/WatchedAnime';
 import { DeleteWatchedAnime } from '../services/deleteWatchedAnime';
 import '../assets/styles/components/Anime.sass';
@@ -24,8 +24,7 @@ const objeto = {
 export const Anime = () => {
 	const User = useContext(ContextUser);
 	const { id } = useParams();
-	const [ Watched, setWatched ] = useState(false);
-	const { Anime, loading, Characters } = useGetAnime({ id });
+	const { Anime, loading, Characters, Watched, setWatched } = useGetAnime({ id });
 
 	const Replicdata = (items, type) => {
 		if (type === objeto.normal) {
@@ -75,16 +74,17 @@ export const Anime = () => {
 	};
 
 	const handleAddWatched = () => {
-		AllWatchedAnimes({
+		AddWatchedAnime({
 			id_user: User.uid,
 			mal_id: Anime.mal_id,
 			image_url: Anime.image_url,
 			title: Anime.title,
 			type: Anime.type,
-			score: Anime.score,
+			score: Anime.score ? Anime.score : 0,
 			genres: Anime.genres,
-		}).then(() => {
-			setWatched(!Watched);
+		}).then(res => {
+			console.log(res);
+			res.hasOwnProperty('data') && setWatched(!Watched);
 		});
 	};
 
@@ -92,8 +92,9 @@ export const Anime = () => {
 		DeleteWatchedAnime({
 			id_user: User.uid,
 			mal_id: Anime.mal_id,
-		}).then(() => {
-			setWatched(!Watched);
+		}).then(res => {
+			console.log(res);
+			res.hasOwnProperty('data') && setWatched(!Watched);
 		});
 	};
 
@@ -102,9 +103,8 @@ export const Anime = () => {
 			User &&
 				WatchedAnime({
 					id_user: User.uid,
-					mal_id: Anime.mal_id,
+					mal_id: id,
 				}).then(({ found }) => {
-					console.log(found);
 					setWatched(found);
 				});
 		},

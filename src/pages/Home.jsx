@@ -9,8 +9,6 @@ import imgLoading from '../assets/static/loading.gif';
 export const Home = () => {
 	const { setPage, ListAnimes, Page, loading, season_name, season_year } = AllAnime();
 
-	console.log(process.env.API_JIKAN);
-	console.log(process.env.NODE_ENV);
 	return (
 		<Layout>
 			<Header title="Home" description="Home the ruki" />
