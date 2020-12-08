@@ -7,12 +7,11 @@ import '../assets/styles/components/SearchForm.sass';
 export const SearchForm = () => {
 	const history = useHistory();
 	const [ SearchAnime, setSearchAnime ] = useState([]);
-	const [ typeSearch, setTypeSearch ] = useState('anime');
 	const [ Name, setName ] = useState('');
 
 	const handleSearchInput = e => {
 		if (e.length >= 4) {
-			getSearch({ title: e, typeSearch }).then(res => {
+			getSearch({ title: e }).then(res => {
 				setSearchAnime(res.results);
 			});
 		}
@@ -20,10 +19,6 @@ export const SearchForm = () => {
 			setSearchAnime([]);
 		}
 		setName(e);
-	};
-
-	const handleChangeRating = e => {
-		setTypeSearch(e.target.value);
 	};
 
 	const handleSearch = e => {
@@ -37,18 +32,11 @@ export const SearchForm = () => {
 	return (
 		<div className="searchContentNavbar">
 			<form className="formSearch">
-				<select
-					className="selectSearch"
-					aria-label="Default select example"
-					onChange={handleChangeRating}>
-					<option value="anime">Anime</option>
-					<option value="manga">Manga</option>
-				</select>
 				<div className="contentInputSearch">
 					<input
 						type="text"
 						className="inputSearch"
-						placeholder="Search"
+						placeholder="Search Anime"
 						onChange={e => handleSearchInput(e.target.value)}
 						value={Name}
 					/>
@@ -57,7 +45,7 @@ export const SearchForm = () => {
 							Name &&
 							SearchAnime.map(item => (
 								<Link
-									to={`/${typeSearch}/${item.mal_id}`}
+									to={`/anime/${item.mal_id}`}
 									onClick={() => setSearchAnime([])}
 									className="response"
 									key={item.mal_id}>
