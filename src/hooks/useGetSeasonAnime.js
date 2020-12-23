@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getSeason } from '../services/getData';
+import { getSeason } from '../services/getSeason';
 import { Object_Anime } from '../utils/models';
 import { sortData } from '../utils/sortData';
 
-export function AllAnime(){
+export function SeasonAnime(){
 	const [ AnimeSeason, setAnimeSeason ] = useState(Object_Anime);
 	const [ ListAnimes, setListAnimes ] = useState([]);
 	const [ Page, setPage ] = useState(0);

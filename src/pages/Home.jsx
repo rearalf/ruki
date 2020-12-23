@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { ListCard } from '../components/ListCard';
 import { Pagination } from '../components/Pagination';
-import { AllAnime } from '../hooks/useGetAllAnime';
+import { SeasonAnime } from '../hooks/useGetSeasonAnime';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
 import imgLoading from '../assets/static/loading.gif';
 
 export const Home = () => {
-	const { setPage, ListAnimes, Page, loading, season_name, season_year } = AllAnime();
+	const { setPage, ListAnimes, Page, loading, season_name, season_year } = SeasonAnime();
 
 	return (
 		<Layout>
