@@ -8,6 +8,7 @@ import { Animes } from '../pages/Animes';
 import { AnimeGenre } from '../pages/AnimeGenre';
 import { AnimeProducer } from '../pages/AnimeProducer';
 import { Search } from '../pages/Search';
+import { SeasonAnime } from '../pages/SeasonAnime';
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 				<Route exact path="/anime/genre/:id" component={AnimeGenre} />
 				<Route exact path="/anime/producer/:id" component={AnimeProducer} />
 				<Route exact path="/search/:name?" component={Search} />
+				<Route exact path="/anime/season/:year/:season?" component={SeasonAnime} />
 				<Route path="*" component={NotFound} status={404} />
 			</Switch>
 		</BrowserRouter>

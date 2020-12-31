@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { Genres, Studios } from '../utils/models';
 import { Header } from '../components/Header';
+import { useGetSeasonArchive } from '../hooks/useGetSeasonAnime';
 import '../assets/styles/components/Animes.sass';
 
 export const Animes = () => {
+	const { Archive } = useGetSeasonArchive();
 	return (
 		<Layout>
 			<Header title="Anime" description="Search anime by genre" />
 			<h1>Anime classification</h1>
 			<section className="sectionAnimeClassification">
-				<h2>Genres</h2>
+				<h2 className="mb-1">Genres</h2>
 				<div className="listAnimeClassification">
 					{Genres.map((item, i) => (
 						<Link
@@ -24,7 +26,7 @@ export const Animes = () => {
 				</div>
 			</section>
 			<section className="sectionAnimeClassification">
-				<h2>Studios</h2>
+				<h2 className="mb-1">Studios</h2>
 				<div className="listAnimeClassification">
 					{Studios.map(({ name, mal_id }) => (
 						<Link
@@ -32,6 +34,19 @@ export const Animes = () => {
 							key={mal_id}
 							className="linkAnimeClassification">
 							{name}
+						</Link>
+					))}
+				</div>
+			</section>
+			<section className="sectionAnimeClassification">
+				<h2 className="mb-1">Anime Seasons</h2>
+				<div className="listAnimeClassification">
+					{Archive.map(({ year, season }, index) => (
+						<Link
+							to={`/anime/season/${year}/${season.toLowerCase()}`}
+							key={index}
+							className="linkAnimeClassification">
+							{season + ' ' + year}
 						</Link>
 					))}
 				</div>

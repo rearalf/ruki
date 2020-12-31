@@ -35,7 +35,7 @@ export const SearchForm = () => {
 				<div className="contentInputSearch">
 					<input
 						type="text"
-						className="inputSearch"
+						className="inputBasic inputSearch"
 						placeholder="Search Anime"
 						onChange={e => handleSearchInput(e.target.value)}
 						value={Name}

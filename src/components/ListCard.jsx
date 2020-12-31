@@ -13,6 +13,7 @@ export const ListCard = ({ list = [] }) => {
 						Genres={list.genres}
 						DateStart={list.airing_start}
 						Score={list.score}
+						Type={list.type}
 						key={list.mal_id}
 						id={list.mal_id}
 					/>

@@ -9,10 +9,14 @@ const fromApiResponseToSeason = apiResponse => {
 	};
 };
 
-export async function getSeason(){
-	const { CurrentYear, CurrentSeason } = getDate();
-
-	const apiRL = `${API_URL}/season/${CurrentYear}/${CurrentSeason}`;
-
-	return await fetch(apiRL).then(res => res.json()).then(fromApiResponseToSeason);
+export async function getSeason({ year = 0, season = '' } = {}){
+	let apiURL;
+	if (year === 0) {
+		const { CurrentYear, CurrentSeason } = getDate();
+		apiURL = `${API_URL}/season/${CurrentYear}/${CurrentSeason}`;
+	}
+	else {
+		apiURL = `${API_URL}/season/${year}/${season}`;
+	}
+	return await fetch(apiURL).then(res => res.json()).then(fromApiResponseToSeason);
 }
