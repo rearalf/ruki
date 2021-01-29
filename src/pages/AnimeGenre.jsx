@@ -4,13 +4,24 @@ import { Layout } from '../components/Layout';
 import { ListCard } from '../components/ListCard';
 import { useGetAllGenreAnime } from '../hooks/useGetAllGenreAnime';
 import { Header } from '../components/Header';
+import { ChangeTypeRated } from '../components/ChangeTypeRated';
+import { useNearScreen } from '../hooks/useNearScreen';
 import imgLoading from '../assets/static/loading.gif';
 import debounce from 'just-debounce-it';
-import { useNearScreen } from '../hooks/useNearScreen';
 
 export const AnimeGenre = () => {
 	const { id } = useParams();
-	const { Animes, Genre, Loading, setPage, loadingNextPage } = useGetAllGenreAnime({ id });
+	const {
+		Animes,
+		Genre,
+		Loading,
+		setPage,
+		loadingNextPage,
+		handleChangeRated,
+		handleChangeOption,
+		Option,
+		Rated,
+	} = useGetAllGenreAnime({ id });
 	const externalRef = useRef();
 	const { isNearScreen } = useNearScreen({
 		externalRef: Loading ? null : externalRef,
@@ -42,6 +53,12 @@ export const AnimeGenre = () => {
 			) : (
 				<Fragment>
 					<h1>{Genre.mal_url.name}</h1>
+					<ChangeTypeRated
+						Option={Option}
+						Rated={Rated}
+						handleChangeOption={handleChangeOption}
+						handleChangeRated={handleChangeRated}
+					/>
 					<ListCard list={Animes} />
 					{loadingNextPage && (
 						<div className="ImgLoading">

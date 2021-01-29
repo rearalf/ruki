@@ -7,13 +7,17 @@ import { Genres } from '../utils/models';
 import { Header } from '../components/Header';
 import { MoreInfo } from '../components/MoreInfo';
 import '../assets/styles/components/SearchPage.sass';
+import { ChangeTypeRated } from '../components/ChangeTypeRated';
 
 export const Search = () => {
 	const { name } = useParams();
 	const [ NameAnime, setNameAnime ] = useState(name);
 	const [ CheckGenres, setCheckGenres ] = useState([]);
 
-	const { SearchAnime } = useSearch({ title: NameAnime, genres: CheckGenres });
+	const { SearchAnime, handleChangeOption, handleChangeRated, Option, Rated } = useSearch({
+		title: NameAnime,
+		genres: CheckGenres,
+	});
 
 	const handleOnChange = e => {
 		setNameAnime(e.target.value);
@@ -71,6 +75,12 @@ export const Search = () => {
 					</div>
 				</MoreInfo>
 			</form>
+			<ChangeTypeRated
+				Option={Option}
+				Rated={Rated}
+				handleChangeOption={handleChangeOption}
+				handleChangeRated={handleChangeRated}
+			/>
 			<ListCard list={SearchAnime} />
 		</Layout>
 	);

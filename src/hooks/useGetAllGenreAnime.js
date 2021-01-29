@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
 import { getAllGenresAnime } from '../services/getAllGenresAnime';
 import { Objec_Genres } from '../utils/models';
+import { filterAnimes } from './useGetSeasonAnime';
 
 export function useGetAllGenreAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
 	const [ loadingNextPage, setLoadingNextPage ] = useState(false);
 	const [ Page, setPage ] = useState(1);
 	const [ Animes, setAnimes ] = useState([]);
+	const [ FilterAnime, setFilterAnime ] = useState([]);
+	const [ Rated, setRated ] = useState(false);
+	const [ Option, setOption ] = useState('All');
 	const [ Genre, setGenre ] = useState({
 		mal_url: new Object(Objec_Genres),
 		item_count: Number,
 	});
+
+	const handleChangeRated = () => setRated(!Rated);
+
+	const handleChangeOption = e => setOption(e.target.value);
 
 	useEffect(
 		() => {
@@ -52,11 +60,27 @@ export function useGetAllGenreAnime({ id }){
 		[ Page, id ],
 	);
 
+	useEffect(
+		() => {
+			const animes = filterAnimes({
+				seasonAnimes: Animes,
+				option: Option,
+				rated: Rated,
+			});
+			setFilterAnime(animes);
+		},
+		[ Page, Animes, Rated, Option ],
+	);
+
 	return {
-		Animes,
+		Animes: FilterAnime,
 		Genre,
 		Loading,
 		setPage,
 		loadingNextPage,
+		handleChangeRated,
+		handleChangeOption,
+		Option,
+		Rated,
 	};
 }

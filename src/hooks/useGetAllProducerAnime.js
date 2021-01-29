@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAllProducerAnime } from '../services/getAllProducerAnime';
 import { Objec_Genres } from '../utils/models';
+import { filterAnimes } from './useGetSeasonAnime';
 
 export function useGetAllProducerAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
@@ -10,6 +11,13 @@ export function useGetAllProducerAnime({ id }){
 	const [ Producer, setProducer ] = useState({
 		meta: new Object(Objec_Genres),
 	});
+	const [ FilterAnime, setFilterAnime ] = useState([]);
+	const [ Rated, setRated ] = useState(false);
+	const [ Option, setOption ] = useState('All');
+
+	const handleChangeRated = () => setRated(!Rated);
+
+	const handleChangeOption = e => setOption(e.target.value);
 
 	useEffect(
 		() => {
@@ -22,7 +30,7 @@ export function useGetAllProducerAnime({ id }){
 					});
 					setLoading(false);
 				})
-				.catch(res => {
+				.catch(() => {
 					setLoading(false);
 				});
 		},
@@ -43,18 +51,34 @@ export function useGetAllProducerAnime({ id }){
 						setLoadingNextPage(false);
 					}
 				})
-				.catch(res => {
+				.catch(() => {
 					setLoadingNextPage(false);
 				});
 		},
 		[ Page, id ],
 	);
 
+	useEffect(
+		() => {
+			const animes = filterAnimes({
+				seasonAnimes: Animes,
+				option: Option,
+				rated: Rated,
+			});
+			setFilterAnime(animes);
+		},
+		[ Animes, Rated, Option ],
+	);
+
 	return {
-		Animes,
+		Animes: FilterAnime,
 		Producer,
 		Loading,
 		setPage,
 		loadingNextPage,
+		handleChangeRated,
+		handleChangeOption,
+		Option,
+		Rated,
 	};
 }

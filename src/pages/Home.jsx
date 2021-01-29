@@ -4,9 +4,19 @@ import { GetSeasonAnime } from '../hooks/useGetSeasonAnime';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
 import imgLoading from '../assets/static/loading.gif';
+import { ChangeTypeRated } from '../components/ChangeTypeRated';
 
 export const Home = () => {
-	const { Loading, Animes, season_name, season_year } = GetSeasonAnime();
+	const {
+		Loading,
+		Animes,
+		season_name,
+		season_year,
+		Option,
+		Rated,
+		handleChangeOption,
+		handleChangeRated,
+	} = GetSeasonAnime();
 
 	return (
 		<Layout>
@@ -17,7 +27,15 @@ export const Home = () => {
 				</div>
 			) : Animes.length ? (
 				<Fragment>
-					<h1>{`${season_name} ${season_year} Anime`}</h1>
+					<div className="mb-2 changeParameters">
+						<h1 className="mb-1">{`${season_name} ${season_year} Anime`}</h1>
+						<ChangeTypeRated
+							Option={Option}
+							Rated={Rated}
+							handleChangeOption={handleChangeOption}
+							handleChangeRated={handleChangeRated}
+						/>
+					</div>
 					<ListCard list={Animes} />
 				</Fragment>
 			) : (
