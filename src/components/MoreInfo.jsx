@@ -6,13 +6,17 @@ export const MoreInfo = ({ children, title = '', id = '' }) => {
 	const showInfo = id => {
 		const info = document.getElementById(id);
 		info.classList.toggle('show');
+		const moreInfo = document.querySelector(`.${id}`).firstChild.lastChild.lastChild;
+		moreInfo.classList.toggle('turn');
 	};
 
 	return (
-		<section className="moreInfo">
+		<section className={`moreInfo ${id}`}>
 			<div className="headerInfo" onClick={() => showInfo(id)}>
 				<h3>{title}</h3>
-				<ArrowDown Width={30} />
+				<i>
+					<ArrowDown Width={30} />
+				</i>
 			</div>
 			<hr />
 			<div className="moreInfoDown" id={id}>

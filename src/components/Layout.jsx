@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 import '../assets/styles/styles.sass';
 
 export const Layout = ({ children }) => {
@@ -7,6 +8,7 @@ export const Layout = ({ children }) => {
 		<Fragment>
 			<Navbar />
 			<main className="container">{children}</main>
+			<Footer />
 		</Fragment>
 	);
 };

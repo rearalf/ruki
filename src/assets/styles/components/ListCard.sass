@@ -3,6 +3,16 @@
     margin-bottom: 5vh
     display: grid
     min-height: 100vh
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    gap: 25px 15px
+    grid-template-columns: repeat(1, 1fr)
+    gap: 25px
     align-items: start
+@media screen and ( min-width: 500px )
+    .ListContent
+        grid-template-columns: repeat(2, 1fr)
+@media screen and ( min-width: 800px )
+    .ListContent
+        grid-template-columns: repeat(3, 1fr)
+@media screen and ( min-width: 1024px )
+    .ListContent
+        grid-template-columns: repeat(5, 1fr)
+

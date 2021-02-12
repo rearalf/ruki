@@ -1,86 +1,142 @@
 @import ../variables
 
-.header_navbar
-    background-color: $color-header-bg
-    margin-bottom: 2rem
-
-    & .Navbar
-        margin: 0 auto
-        width: 90%
-        padding: 1rem 0
-
-        & .navbarHeader
-            display: flex
-            justify-content: space-between
-            align-items: center
-            width: 100%
-            font-size: 1.1em
-
-            & a
-                color: $color-text-inverse
-
+.top_navbar
+    background-color: $color-bg-primary
+    & .navbar_movil
+        display: flex
+        align-items: center
+        justify-content: space-between
+        font-size: 18px
+        padding: 10px 30px
+        border-bottom: 2px solid $border-primary
+        & .btn_nav_toggle
+            cursor: pointer
+            background: transparent;
+            &.none_show
+                display: none
+            & .svg
+                font-size: 20px
+                transition: all .5s ease-in-out
+                & path
+                    fill: $color-text-link
+            &:focus
+                outline: $border-secondary auto 1px
+            &:hover
+                & .svg
+                    & path
+                        fill: $color-text-link-hover
+        & .navbar_brand
+            & img
+                height: 40px
+                width: 110px
+    & .navbar_collapse
+        transition: all 1s ease-in-out
+        transform: translateY(-200vh)
+        background-color: $color-bg-primary
+        position: absolute
+        height: 100vh
+        width: 100%
+        z-index: 1
+        &.show
+            transform: translateY(0)
+        & .navbar_nav
+            list-style: none
+            padding: 20px
+            & .nav_item
+                padding: 15px
                 &:hover
-                    color: $color-header-text
-
-            & .navToggle
-                cursor: pointer
-                outline: none
-                cursor: pointer
-                background-color: transparent
-                border: none
-                padding: 0
-                transition: all .2s
-
-        & .navbarCollapse
+                    & .nav_link
+                        color: $color-text-link-hover
+                    & .svg
+                        & path
+                            stroke: $border-primary
+                &.dropdown
+                    display: flex
+                    flex-direction: column
+                    & #svgDropDown
+                        & .svg
+                            transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out
+                            &.turn
+                                transform: rotate(180deg)
+                    & .nav_link
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                    & .dropdown_nav
+                        -webkit-transition: max-height .5s ease-in-out
+                        transition: max-height .5s ease-in-out
+                        margin-top: 15px
+                        overflow: hidden
+                        max-height: 0
+                        height: auto
+                        position: relative
+                        &.show
+                            border-top: 1px solid $border-primary
+                            -webkit-transition: max-height .5s ease-in-out
+                            transition: max-height .5s ease-in-out
+                            max-height: 600px
+                        & .navbar_nav
+                            padding: 0
+    & .navbar_desktop
+        border-bottom: 2px solid $border-secondary
+        align-items: center
+        justify-content: space-between
+        padding: 10px 30px
+        & .navbar_brand
+            & .brand
+                & .img_brand
+                    height: 45px
+        & .navbar_nav
+            list-style: none
+            display: flex
+            & .nav_item
+                padding: 15px 20px
+                &:hover
+                    & .nav_link
+                        color: $color-text-link-hover
+                    & .svg
+                        & path
+                            stroke: $border-primary
+                &.dropdown
+                    & .svg
+                        margin-left: 5px
+                    & .dropdown_nav
+                        display: -ms-flexbox
+                        display: flex
+                        flex-direction: column
+                        opacity: 0
+                        visibility: hidden
+                        position: absolute
+                        top: 50px
+                        right: 45px
+                        z-index: 1
+                        -webkit-transition: visibility .5s linear, opacity .5s linear
+                        transition: visibility .5s linear, opacity .5s linear
+                        border-radius: $border-radius
+                        background-color: $color-bg-primary
+                        box-shadow: $box-shadow-secondary
+                    &:hover
+                        & .dropdown_nav
+                            opacity: 1
+                            visibility: visible
+                    &.navbar_nav
+                        list-style: none
+                        display: flex
+                        & .nav_item
+                            padding: 15px 20px
+                            &:hover
+                                & .nav_link
+                                    color: $color-text-link-hover
+@media screen and ( max-width: 600px )
+    .top_navbar
+        .navbar_desktop
             display: none
 
-            &.show
-                display: block
-                width: 100%
-
-            & ul
-                list-style: none
-
-                & li
-                    margin: .8rem .5rem
-
-                    & a
-                        font-size: 1.1em
-                        color: $color-text-inverse
-
-                        &:hover
-                            color: $color-header-text
-
-    & .containerSearch
-        margin: 0 auto
-        width: 90%
-        padding-bottom: 1rem
-
-@media screen and ( min-width: 700px )
-    .header_navbar
-        & .Navbar
+@media screen and ( min-width: 600px )
+    .top_navbar
+        .navbar_desktop
             display: flex
-            justify-content: space-between
-            align-items: center
-            flex-wrap: wrap
-
-            & .navbarHeader
-                width: auto
-
-                & .navToggle
-                    display: none
-
-            & .navbarCollapse
-                display: flex
-                justify-content: space-between
-                padding: 0
-
-                &.show
-                    width: auto
-
-                & ul
-                    display: flex
-                    align-items: center
-
-                    & li
-                        margin: 0 .5rem
+        .navbar_movil
+            display: none
+        .navbar_collapse
+            display: none

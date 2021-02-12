@@ -6,58 +6,48 @@
     gap: 25px 15px
     justify-content: space-around
     background-color: $color-bg-primary
-    box-shadow: $color-shadow-large
-    border: 1px solid $color-border-primary
+    box-shadow: $box-shadow
     border-radius: $border-radius
     margin-bottom: 2rem
     min-height: 300px
-
+    border: $border
     & img
         border-top-left-radius: $border-radius
         border-top-right-radius: $border-radius
-        background-color: $color-bg-info
+        background-color: $color-bg-primary
         min-height: 300px
         width: 100%
-
     & .Info
         display: flex
         flex-wrap: wrap
         flex-direction: column
         width: 100%
         padding: 1rem 2rem
-
         & .Header
             display: flex
             flex-wrap: wrap
             justify-content: space-around
             margin-bottom: 1.5rem
-            color: $color-text-secondary
-
             & .HeaderInfo
                 display: flex
                 align-items: center
                 margin: .3rem
-
+                opacity: 0.6
             & h4
                 display: flex
                 align-items: center
                 margin-right: .3rem
-
                 & svg
                     margin-right: .3rem
-
         & .InfoPrimary
-
             & h1
                 margin-bottom: 1rem
                 text-align: center
-
 .moreInfo
     & .moreInfoDown
         & .infoText
             font-size: 1em
             padding-left: 1rem
-
             & .listInfo
                 font-size: .8em
                 margin: .2rem .5rem
@@ -65,56 +55,47 @@
         & .characters
             display: grid
             gap: 1rem 1.5rem
-
             & .character
                 display: grid
                 grid-template-columns: repeat(2,1fr)
-                border: 1px solid $color-border-primary
+                border: $border
                 column-gap: 1rem
-
+                border-radius: $border-radius
                 & .characterInfo
                     display: flex
                     align-items: center
-
                     &.characterAnime
                         & .infoCharacterAnime
                             margin-left: 1rem
-
                     &.voiceActors
                         justify-content: flex-end
                         & .infoCharacterAnime
                             margin-right: 1rem
-
                     & .infoCharacterAnime
                         font-size: 12px
-
                 & img
                     width: 25%
                     min-height: 100%
+                    border-radius: $border-radius
         & .themes
             display: flex
             justify-content: space-between
             flex-wrap: wrap
             padding-left: 1rem
-
             & .theme
                 margin-bottom: .5rem
-
 @media screen and ( min-width: 600px )
     .ShowData
         grid-template-columns: 230px 1fr
-
         & img
             border-top-left-radius: $border-radius
             border-bottom-left-radius: $border-radius
             border-top-right-radius: 0
             height: 100%
-
     .moreInfo
         & .moreInfoDown
             & .characters
                 grid-template-columns: repeat(2, 1fr)
-
 @media screen and ( min-width: 1200px )
     .moreInfo
         & .moreInfoDown

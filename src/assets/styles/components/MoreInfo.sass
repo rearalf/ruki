@@ -2,26 +2,40 @@
 
 .moreInfo
     background-color: $color-bg-primary
-    box-shadow: $color-shadow-large
-    border: 1px solid $color-border-primary
+    border: $border
     border-radius: $border-radius
     padding: .8rem 1.2rem
     margin-bottom: 2rem
-
+    box-shadow: $box-shadow
+    & hr
+        border: $border
+        margin: 5px 0
     & .headerInfo
         display: flex
         justify-content: space-between
         align-items: center
         cursor: pointer
-        margin-bottom: .2rem
-
+        padding-bottom: 5px
+        & i
+            & .svg
+                transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out
+                &.turn
+                    transform: rotate(180deg)
+        &:hover
+            color: $color-text-link-hover
+            & .svg
+                & g
+                    & path
+                        stroke: $color-text-link-hover
+                    & circle
+                        stroke: $color-text-link-hover
     & .moreInfoDown
-        margin-top: 1rem
-        margin-bottom: .5rem
-        height: auto
+        -webkit-transition: all .5s ease
+        transition: all .5s ease
         overflow: hidden
-        transition: height .5s
-        display: none
-
+        max-height: 0
+        height: auto
         &.show
-            display: block
+            -webkit-transition: all .5s ease
+            transition: all .5s ease
+            max-height: 600px

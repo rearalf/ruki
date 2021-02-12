@@ -2,7 +2,12 @@ import React from 'react';
 
 export const ArrowDown = ({ Height = 20, Width = 20, Fill = '#24292e', Title = 'Down' }) => {
 	return (
-		<svg height={Height} viewBox="0 0 21 21" width={Width} xmlns="http://www.w3.org/2000/svg">
+		<svg
+			height={Height}
+			viewBox="0 0 21 21"
+			width={Width}
+			className="svg"
+			xmlns="http://www.w3.org/2000/svg">
 			<title>{Title}</title>
 			<g
 				fill="none"

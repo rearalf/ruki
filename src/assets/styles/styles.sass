@@ -7,11 +7,36 @@
 
 body
   color: $color-text-primary
-  background-color: $color-bg-tertiary
+  background-color: $color-bg-primary
+  font-family: "Arial"
 
 a
   text-decoration: none
   color: $color-text-link
+  padding: 2px
+  border-radius: $border-radius
+  &:focus
+    outline: $border-secondary auto 1px
+  &:hover
+    color: $color-text-link-hover
+
+button
+  border: none
+  padding: 5px
+  border-radius: $border-radius
+  &:focus
+    outline: $border-secondary auto 1px
+
+h1
+  font-size: 18px
+h2
+  font-size: 16px
+h3
+  font-size: 14px
+p
+  font-size: 12px
+small
+  font-size: 10px
 
 .container
   margin-left: auto
@@ -25,10 +50,13 @@ a
 .inputBasic
   padding: .5rem .8rem
   border-radius: $border-radius
-  box-shadow: $color-shadow-medium
-  border: 1px solid $color-border-primary
+  box-shadow: $box-shadow
+  border: $border
 
 .mb-1
   margin-bottom: 1rem
 .mb-2
   margin-bottom: 2rem
+
+main
+  min-height: 75vh
