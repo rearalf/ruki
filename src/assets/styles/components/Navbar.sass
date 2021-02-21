@@ -2,6 +2,29 @@
 
 .top_navbar
     background-color: $color-bg-primary
+    & .nav_form
+        position: relative
+        & .search_nav
+            display: flex
+            align-items: center
+            justify-content: space-between
+            gap: 10px
+            & .inputBasic
+                padding: 5px 15px
+                width: 100%
+            & .btnSearch
+                border: $border
+                & .svg
+                    & g
+                        stroke: $color-text-link
+                &:hover
+                    border-color: $border-primary
+                    & .svg
+                        & g
+                            stroke: $color-text-link-hover
+                &[disabled]
+                    pointer-events: none
+                    opacity: 0.5
     & .navbar_movil
         display: flex
         align-items: center
@@ -10,8 +33,6 @@
         padding: 10px 30px
         border-bottom: 2px solid $border-primary
         & .btn_nav_toggle
-            cursor: pointer
-            background: transparent;
             &.none_show
                 display: none
             & .svg
@@ -89,6 +110,7 @@
         & .navbar_nav
             list-style: none
             display: flex
+            align-items: center
             & .nav_item
                 padding: 15px 20px
                 &:hover
@@ -104,11 +126,12 @@
                         display: -ms-flexbox
                         display: flex
                         flex-direction: column
+                        align-items: flex-start
                         opacity: 0
                         visibility: hidden
                         position: absolute
-                        top: 50px
-                        right: 45px
+                        top: 60px
+                        right: 300px
                         z-index: 1
                         -webkit-transition: visibility .5s linear, opacity .5s linear
                         transition: visibility .5s linear, opacity .5s linear
@@ -127,10 +150,32 @@
                             &:hover
                                 & .nav_link
                                     color: $color-text-link-hover
+            & .nav_form
+                & .search_respose
+                    position: absolute
+                    left: 20px
+                    width: 70%
+                    border-radius: $border-radius
+                    background-color: $color-bg-primary
+                    box-shadow: $box-shadow-secondary
+                    display: flex
+                    flex-direction: column
+                    z-index: 1
+                    & .response_link
+                        display: flex
+                        align-items: center
+                        gap: 10px
+                        margin: 5px 15px
+                        & img
+                            width: 30px
 @media screen and ( max-width: 600px )
     .top_navbar
         .navbar_desktop
             display: none
+        .navbar_collapse
+            & .nav_form
+                & .search_respose
+                    display: none
 
 @media screen and ( min-width: 600px )
     .top_navbar

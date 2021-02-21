@@ -49,12 +49,12 @@ export const Search = () => {
 		<Layout>
 			<Header title="Search Anime" description="Search all anime for genres" />
 			<form className="formSeachPage">
-				<h1>Search Anime</h1>
+				<h1 className="mb-1">Search Anime</h1>
 				<div>
 					<input
 						type="text"
 						placeholder="Search Anime"
-						className="inputBasic inputSearch"
+						className="inputBasic inputSearch mb-1"
 						value={NameAnime}
 						onChange={handleOnChange}
 					/>

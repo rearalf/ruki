@@ -1,7 +1,12 @@
 import React from 'react';
 
 export const SearchIcon = ({ Width = 20, Height = 20, Fill = '#24292e', Title = 'Search' }) => (
-	<svg height={Width} viewBox="0 0 21 21" width={Height} xmlns="http://www.w3.org/2000/svg">
+	<svg
+		height={Width}
+		viewBox="0 0 21 21"
+		width={Height}
+		className="svg"
+		xmlns="http://www.w3.org/2000/svg">
 		<title>{Title}</title>
 		<g
 			fill="none"

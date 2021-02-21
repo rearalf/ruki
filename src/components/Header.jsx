@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 export const Header = ({ title = '', description = '' }) => {
 	return (
 		<Helmet>
-			<title> {title} || Rūkī</title>
+			<title>Rūkī || {title}</title>
 			<meta name="description" content={description} />
 		</Helmet>
 	);
