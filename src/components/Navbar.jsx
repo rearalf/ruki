@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BurgerBars } from './Icons/Bars';
-import { Close } from './Icons/close';
+import { Close } from './Icons/Close';
 import { ArrowDownLight } from './Icons/ArrowDownLight';
 import { SearchIcon } from '../components/Icons/SearchIcon';
 import { useNavBar } from '../hooks/useNavBar';
