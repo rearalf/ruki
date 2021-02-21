@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ListCard } from '../components/ListCard';
 import { Header } from '../components/Header';
 import { useGetSeasonArchive, useGetSeasonEspecific } from '../hooks/useGetSeasonAnime';
-import imgLoading from '../assets/static/loading.gif';
 import { ChangeTypeRated } from '../components/ChangeTypeRated';
+import { SearchIcon } from '../components/Icons/SearchIcon';
+import imgLoading from '../assets/static/loading.gif';
 import '../assets/styles/components/SeasonAnime.sass';
 
 export const SeasonAnime = () => {
@@ -69,7 +70,10 @@ export const SeasonAnime = () => {
 							<option value="spring">Spring</option>
 							<option value="fall">Fall</option>
 						</select>
-						<button className="btnSeasonForm">Search season</button>
+						<button className="btnSeasonForm">
+							<SearchIcon />
+							Search season
+						</button>
 					</form>
 					<ChangeTypeRated
 						Option={Option}

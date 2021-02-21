@@ -24,8 +24,16 @@ button
   border: none
   padding: 5px
   border-radius: $border-radius
+  color: $color-btn-text
+  background-color: transparent
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
   &:focus
     outline: $border-secondary auto 1px
+  &:hover
+    color: $color-btn-text-hover
 
 h1
   font-size: 18px
@@ -48,10 +56,17 @@ small
   justify-content: center
 
 .inputBasic
-  padding: .5rem .8rem
+  padding: 10px 15px
   border-radius: $border-radius
-  box-shadow: $box-shadow
-  border: $border
+  border: .5px solid $border-secondary
+  background-color: transparent
+  color: $color-text-primary
+  &:focus
+    outline: $border-secondary auto 1px
+    box-shadow: 0 0 5px 5px $box-shadow-color
+  &:hover
+    border-color: $border-primary
+    box-shadow: 0 0 5px 5px $box-shadow-color
 
 .mb-1
   margin-bottom: 1rem

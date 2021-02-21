@@ -1,31 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BurgerBars } from './Icons/Bars';
-import Logo from '../assets/static/Logo.png';
 import { Close } from './Icons/close';
 import { ArrowDownLight } from './Icons/ArrowDownLight';
-import { getDate } from '../utils/settings';
+import { SearchIcon } from '../components/Icons/SearchIcon';
+import { useNavBar } from '../hooks/useNavBar';
+import Logo from '../assets/static/Logo.png';
 import '../assets/styles/components/Navbar.sass';
 
 export const Navbar = () => {
-	const Toggle = () => {
-		const navbarCollapse = document.getElementById('navbar_collapse');
-		navbarCollapse.classList.toggle('show');
-		const navToggle = document.querySelectorAll('.btn_nav_toggle');
-		navToggle.forEach(btn => {
-			btn.classList.toggle('none_show');
-		});
-	};
-
-	const handleDropDown = () => {
-		const dropDown = document.getElementById('navbarDropdown');
-		dropDown.classList.toggle('show');
-		const svgDropDown = document.getElementById('svgDropDown').firstChild;
-		svgDropDown.classList.toggle('turn');
-	};
-
-	const { CurrentYear, CurrentSeason } = getDate();
-
+	const { CurrentSeason, CurrentYear, Toggle, handleDropDown } = useNavBar();
 	return (
 		<header className="top_navbar mb-2">
 			<nav className="navbar_desktop">
@@ -70,6 +54,7 @@ export const Navbar = () => {
 							Login
 						</Link>
 					</li>
+					<NavSearch />
 				</ul>
 			</nav>
 			<nav className="navbar_movil">
@@ -86,6 +71,7 @@ export const Navbar = () => {
 			</nav>
 			<div className="navbar_collapse" id="navbar_collapse">
 				<ul className="navbar_nav container">
+					<NavSearch />
 					<li className="nav_item">
 						<Link to="/" className="nav_link">
 							Home
@@ -128,5 +114,63 @@ export const Navbar = () => {
 				</ul>
 			</div>
 		</header>
+	);
+};
+
+const NavSearch = () => {
+	const {
+		isButtonDisabled,
+		handleSearch,
+		Focus,
+		setFocus,
+		Name,
+		handleSearchInput,
+		SearchAnime,
+		setSearchAnime,
+		handleOnBlur,
+		handleOnFocus,
+	} = useNavBar();
+
+	return (
+		<div
+			className="nav_item nav_form"
+			tabIndex={1}
+			onFocus={e => handleOnFocus(e)}
+			onBlur={e => handleOnBlur(e)}>
+			<form className="search_nav">
+				<input
+					type="text"
+					className="inputBasic"
+					aria-label="Search Anime"
+					placeholder="Search Anime"
+					onChange={handleSearchInput}
+					value={Name}
+				/>
+				<button className="btnSearch" onClick={handleSearch} disabled={isButtonDisabled}>
+					<SearchIcon />
+				</button>
+			</form>
+			<div className="search_respose">
+				{Focus &&
+					SearchAnime &&
+					Name &&
+					SearchAnime.map(item => (
+						<Link
+							to={`/anime/${item.mal_id}`}
+							onClick={() => {
+								setSearchAnime([]);
+								setFocus(!Focus);
+							}}
+							className="response_link"
+							key={item.mal_id}>
+							<img src={item.image_url} alt={item.title} />
+							<div className="infoRespon">
+								<p className="title">{item.title}</p>
+								<p className="type">{item.type}</p>
+							</div>
+						</Link>
+					))}
+			</div>
+		</div>
 	);
 };
