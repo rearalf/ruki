@@ -38,7 +38,7 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav_item">
-								<Link to="/anime" className="nav_link">
+								<Link to="/top/anime" className="nav_link">
 									Top Animes
 								</Link>
 							</li>

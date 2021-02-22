@@ -1,13 +1,11 @@
-import React, { Fragment, useCallback, useEffect, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ListCard } from '../components/ListCard';
 import { useGetAllGenreAnime } from '../hooks/useGetAllGenreAnime';
 import { Header } from '../components/Header';
 import { ChangeTypeRated } from '../components/ChangeTypeRated';
-import { useNearScreen } from '../hooks/useNearScreen';
 import imgLoading from '../assets/static/loading.gif';
-import debounce from 'just-debounce-it';
 
 export const AnimeGenre = () => {
 	const { id } = useParams();
@@ -15,30 +13,13 @@ export const AnimeGenre = () => {
 		Animes,
 		Genre,
 		Loading,
-		setPage,
 		loadingNextPage,
+		externalRef,
 		handleChangeRated,
 		handleChangeOption,
 		Option,
 		Rated,
 	} = useGetAllGenreAnime({ id });
-	const externalRef = useRef();
-	const { isNearScreen } = useNearScreen({
-		externalRef: Loading ? null : externalRef,
-		once: false,
-	});
-
-	const debounceHandleNextPage = useCallback(
-		debounce(() => setPage(prevPage => prevPage + 1), 200),
-		[ setPage ],
-	);
-
-	useEffect(
-		() => {
-			if (isNearScreen) debounceHandleNextPage();
-		},
-		[ isNearScreen, debounceHandleNextPage ],
-	);
 
 	return (
 		<Layout>

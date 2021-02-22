@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { getAllProducerAnime } from '../services/getAllProducerAnime';
 import { Objec_Genres } from '../utils/models';
 import { filterAnimes } from './useGetSeasonAnime';
+import { useNearScreen } from './useNearScreen';
+import debounce from 'just-debounce-it';
 
 export function useGetAllProducerAnime({ id }){
 	const [ Loading, setLoading ] = useState(false);
@@ -70,12 +72,30 @@ export function useGetAllProducerAnime({ id }){
 		[ Animes, Rated, Option ],
 	);
 
+	const externalRef = useRef();
+	const { isNearScreen } = useNearScreen({
+		externalRef: Loading ? null : externalRef,
+		once: false,
+	});
+
+	const debounceHandleNextPage = useCallback(
+		debounce(() => setPage(prevPage => prevPage + 1), 1000),
+		[ setPage ],
+	);
+
+	useEffect(
+		() => {
+			if (isNearScreen) debounceHandleNextPage();
+		},
+		[ isNearScreen, debounceHandleNextPage ],
+	);
+
 	return {
 		Animes: FilterAnime,
 		Producer,
 		Loading,
-		setPage,
 		loadingNextPage,
+		externalRef,
 		handleChangeRated,
 		handleChangeOption,
 		Option,

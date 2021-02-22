@@ -1,12 +1,10 @@
-import React, { Fragment, useCallback, useEffect, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ListCard } from '../components/ListCard';
 import { useGetAllProducerAnime } from '../hooks/useGetAllProducerAnime';
 import { Header } from '../components/Header';
-import { useNearScreen } from '../hooks/useNearScreen';
 import { ChangeTypeRated } from '../components/ChangeTypeRated';
-import debounce from 'just-debounce-it';
 import imgLoading from '../assets/static/loading.gif';
 
 export const AnimeProducer = () => {
@@ -15,30 +13,13 @@ export const AnimeProducer = () => {
 		Animes,
 		Producer,
 		Loading,
-		setPage,
 		loadingNextPage,
+		externalRef,
 		handleChangeRated,
 		handleChangeOption,
 		Option,
 		Rated,
 	} = useGetAllProducerAnime({ id });
-	const externalRef = useRef();
-	const { isNearScreen } = useNearScreen({
-		externalRef: Loading ? null : externalRef,
-		once: false,
-	});
-
-	const debounceHandleNextPage = useCallback(
-		debounce(() => setPage(prevPage => prevPage + 1), 1000),
-		[ setPage ],
-	);
-
-	useEffect(
-		() => {
-			if (isNearScreen) debounceHandleNextPage();
-		},
-		[ isNearScreen, debounceHandleNextPage ],
-	);
 
 	return (
 		<Layout>

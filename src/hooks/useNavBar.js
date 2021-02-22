@@ -17,6 +17,8 @@ export function useNavBar(){
 		navToggle.forEach(btn => {
 			btn.classList.toggle('none_show');
 		});
+		const body = document.querySelector('body');
+		body.classList.toggle('nav_open_noscroll');
 	};
 
 	const handleDropDown = () => {
