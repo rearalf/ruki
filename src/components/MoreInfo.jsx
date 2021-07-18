@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown } from './Icons/ArrowDown';
-import '../assets/styles/components/MoreInfo.sass';
+import '@styles/components/MoreInfo.sass';
 
 export const MoreInfo = ({ children, title = '', id = '' }) => {
 	const showInfo = id => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getAnime, getAnimeCharactersStaff } from '../services/getAnime';
-import { objeto_anime } from '../utils/models';
+import { getAnime, getAnimeCharactersStaff } from '@services/getAnime';
+import { objeto_anime } from '@utils/models';
 
 export function useGetAnime({ id }){
 	const [ Anime, setAnime ] = useState(objeto_anime);

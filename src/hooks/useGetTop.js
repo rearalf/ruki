@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getTop } from '../services/getTop';
+import { getTop } from '@services/getTop';
 import { useNearScreen } from './useNearScreen';
 import debounce from 'just-debounce-it';
 

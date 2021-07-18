@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Star } from './Icons/Star';
-import '../assets/styles/components/Card.sass';
 import { Link } from 'react-router-dom';
+import '@styles/components/Card.sass';
 
 export const Card = ({
 	Title = '',

@@ -1,4 +1,4 @@
-import { API_URL } from '../utils/settings';
+import { API_URL } from '@utils/settings';
 
 export async function getManga({ id }){
 	const apiRL = `${API_URL}/manga/${id}`;

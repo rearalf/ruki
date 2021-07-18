@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Star } from '../components/Icons/Star';
-import { Rank } from '../components/Icons/Rank';
-import { Users } from '../components/Icons/Users';
-import { useGetAnime } from '../hooks/useGetAnime';
-import imgLoading from '../assets/static/loading.gif';
+import { Star } from '@components/Icons/Star';
+import { Rank } from '@components/Icons/Rank';
+import { Users } from '@components/Icons/Users';
+import { useGetAnime } from '@hooks/useGetAnime';
 import { NotFound } from './NotFound';
-import { Layout } from '../components/Layout';
-import { Header } from '../components/Header';
-import { MoreInfo } from '../components/MoreInfo';
-import '../assets/styles/components/Anime.sass';
+import { Layout } from '@components/Layout';
+import { Header } from '@components/Header';
+import { MoreInfo } from '@components/MoreInfo';
+import imgLoading from '@static/loading.gif';
+import '@styles/components/Anime.sass';
 
 const objeto = {
 	normal: 'normal',

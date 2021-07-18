@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import { Layout } from '../components/Layout';
-import { ListCard } from '../components/ListCard';
-import { useGetAllGenreAnime } from '../hooks/useGetAllGenreAnime';
-import { Header } from '../components/Header';
-import { ChangeTypeRated } from '../components/ChangeTypeRated';
-import imgLoading from '../assets/static/loading.gif';
+import { Layout } from '@components/Layout';
+import { ListCard } from '@components/ListCard';
+import { useGetAllGenreAnime } from '@hooks/useGetAllGenreAnime';
+import { Header } from '@components/Header';
+import { ChangeTypeRated } from '@components/ChangeTypeRated';
+import imgLoading from '@static/loading.gif';
 
 export const AnimeGenre = () => {
 	const { id } = useParams();

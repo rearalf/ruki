@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { BurgerBars } from './Icons/Bars';
 import { Close } from './Icons/Close';
 import { ArrowDownLight } from './Icons/ArrowDownLight';
-import { SearchIcon } from '../components/Icons/SearchIcon';
-import { useNavBar } from '../hooks/useNavBar';
-import Logo from '../assets/static/Logo.png';
-import '../assets/styles/components/Navbar.sass';
+import { SearchIcon } from '@components/Icons/SearchIcon';
+import { useNavBar, useNavSearch } from '@hooks/useNavBar';
+import Logo from '@static/Logo.png';
+import '@styles/components/Navbar.sass';
 
 export const Navbar = () => {
-	const { CurrentSeason, CurrentYear, Toggle, handleDropDown } = useNavBar();
+	const { CurrentSeason, CurrentYear, handleDropDown, toggleState, setTogglestate } = useNavBar();
 	return (
 		<header className="top_navbar mb-2">
 			<nav className="navbar_desktop">
@@ -58,10 +58,14 @@ export const Navbar = () => {
 				</ul>
 			</nav>
 			<nav className="navbar_movil">
-				<button className="btn_nav_toggle" onClick={Toggle}>
+				<button
+					className={`btn_nav_toggle  ${toggleState ? 'none_show' : ''}`}
+					onClick={() => setTogglestate(!toggleState)}>
 					<BurgerBars />
 				</button>
-				<button className="btn_nav_toggle none_show" onClick={Toggle}>
+				<button
+					className={`btn_nav_toggle ${toggleState ? '' : 'none_show'}`}
+					onClick={() => setTogglestate(!toggleState)}>
 					<Close />
 				</button>
 				<Link to="/" className="navbar_brand">
@@ -69,7 +73,7 @@ export const Navbar = () => {
 				</Link>
 				<Link to="/">Login</Link>
 			</nav>
-			<div className="navbar_collapse" id="navbar_collapse">
+			<div className={`navbar_collapse ${toggleState ? 'show' : ''}`} id="navbar_collapse">
 				<ul className="navbar_nav container">
 					<NavSearch />
 					<li className="nav_item">
@@ -78,12 +82,12 @@ export const Navbar = () => {
 						</Link>
 					</li>
 					<li className="nav_item dropdown">
-						<Link className="nav_link" onClick={handleDropDown}>
+						<a className="nav_link" onClick={handleDropDown}>
 							Anime
 							<i id="svgDropDown">
 								<ArrowDownLight />
 							</i>
-						</Link>
+						</a>
 						<div className="dropdown_nav" id="navbarDropdown">
 							<ul className="navbar_nav">
 								<li className="nav_item">
@@ -129,7 +133,7 @@ const NavSearch = () => {
 		setSearchAnime,
 		handleOnBlur,
 		handleOnFocus,
-	} = useNavBar();
+	} = useNavSearch();
 
 	return (
 		<div

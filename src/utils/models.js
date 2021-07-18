@@ -179,237 +179,296 @@ export const Studios = [
 	{
 		mal_id: 1,
 		name: 'Studio Pierrot',
+		key: 50,
 	},
 	{
 		mal_id: 2,
 		name: 'Kyoto Animation',
+		key: 51,
 	},
 	{
 		mal_id: 3,
 		name: 'Gonzo',
+		key: 52,
 	},
 	{
 		mal_id: 4,
 		name: 'Bones',
+		key: 53,
 	},
 	{
 		mal_id: 5,
 		name: 'Bee Train',
+		key: 54,
 	},
 	{
 		mal_id: 6,
 		name: 'Gainax',
+		key: 55,
 	},
 	{
 		mal_id: 7,
 		name: 'J.C.Staff',
+		key: 56,
 	},
 	{
 		mal_id: 8,
 		name: 'Artland',
+		key: 57,
 	},
 	{
 		mal_id: 10,
 		name: 'Production I.G',
+		key: 58,
 	},
 	{
 		mal_id: 10,
 		name: 'Production I.G',
+		key: 59,
 	},
 	{
 		mal_id: 11,
 		name: 'Madhouse',
+		key: 60,
 	},
 	{
 		mal_id: 13,
 		name: 'Studio 4°C',
+		key: 61,
 	},
 	{
 		mal_id: 14,
 		name: 'Sunrise',
+		key: 62,
 	},
 	{
 		mal_id: 15,
 		name: 'Sony Pictures Entertainment',
+		key: 63,
 	},
 	{
 		mal_id: 16,
 		name: 'TV Tokyo',
+		key: 64,
 	},
 	{
 		mal_id: 17,
 		name: 'Aniplex',
+		key: 65,
 	},
 	{
 		mal_id: 18,
 		name: 'Toei Animation',
+		key: 66,
 	},
 	{
 		mal_id: 21,
 		name: 'Studio Ghibli',
+		key: 67,
 	},
 	{
 		mal_id: 22,
 		name: 'Nippon Animation',
+		key: 68,
 	},
 	{
 		mal_id: 27,
 		name: 'Xebec',
+		key: 69,
 	},
 	{
 		mal_id: 28,
 		name: 'OLM',
+		key: 70,
 	},
 	{
 		mal_id: 30,
 		name: 'Ajia-Do',
+		key: 71,
 	},
 	{
 		mal_id: 36,
 		name: 'Gallop',
+		key: 72,
 	},
 	{
 		mal_id: 37,
 		name: 'Studio Deen',
+		key: 73,
 	},
 	{
 		mal_id: 38,
 		name: 'Arms',
+		key: 74,
 	},
 	{
 		mal_id: 41,
 		name: 'Satelight',
+		key: 75,
 	},
 	{
 		mal_id: 43,
 		name: 'ufotable',
+		key: 76,
 	},
 	{
 		mal_id: 44,
 		name: 'Shaft',
+		key: 77,
 	},
 	{
 		mal_id: 51,
 		name: 'Diomedea',
+		key: 78,
 	},
 	{
 		mal_id: 56,
 		name: 'A-1 Pictures',
+		key: 79,
 	},
 	{
 		mal_id: 60,
 		name: 'Actas',
+		key: 80,
 	},
 	{
 		mal_id: 68,
 		name: 'Mushi Production',
+		key: 81,
 	},
 	{
 		mal_id: 73,
 		name: 'TMS Entertainment',
+		key: 82,
 	},
 	{
 		mal_id: 91,
 		name: 'feel.',
+		key: 83,
 	},
 	{
 		mal_id: 95,
 		name: 'Doga Kobo',
+		key: 84,
 	},
 	{
 		mal_id: 101,
 		name: 'Studio Hibari',
+		key: 85,
 	},
 	{
 		mal_id: 103,
 		name: 'Tatsunoko Production',
+		key: 86,
 	},
 	{
 		mal_id: 112,
 		name: "Brain's Base",
+		key: 87,
 	},
 	{
 		mal_id: 120,
 		name: 'TNK',
+		key: 88,
 	},
 	{
 		mal_id: 121,
 		name: 'Active',
+		key: 89,
 	},
 	{
 		mal_id: 126,
 		name: 'Studio Comet',
+		key: 90,
 	},
 	{
 		mal_id: 132,
 		name: 'P.A. Works',
+		key: 91,
 	},
 	{
 		mal_id: 196,
 		name: 'Production Reed',
+		key: 92,
 	},
 	{
 		mal_id: 207,
 		name: 'Magic Bus',
+		key: 93,
 	},
 	{
 		mal_id: 211,
 		name: 'Rakuonsha',
+		key: 94,
 	},
 	{
 		mal_id: 218,
 		name: 'Zexcs',
+		key: 95,
 	},
 	{
 		mal_id: 247,
 		name: 'Shin-Ei Animation',
+		key: 96,
 	},
 	{
 		mal_id: 276,
 		name: 'DLE',
+		key: 97,
 	},
 	{
 		mal_id: 300,
 		name: 'Silver Link.',
+		key: 98,
 	},
 	{
 		mal_id: 406,
 		name: 'Asahi Production',
+		key: 99,
 	},
 	{
 		mal_id: 432,
 		name: 'Kachidoki Studio',
+		key: 100,
 	},
 	{
 		mal_id: 456,
 		name: 'Lerche',
+		key: 101,
 	},
 	{
 		mal_id: 541,
 		name: 'Seven',
+		key: 102,
 	},
 	{
 		mal_id: 839,
 		name: 'LIDENFILMS',
+		key: 103,
 	},
 	{
 		mal_id: 858,
 		name: 'Wit Studio',
+		key: 104,
 	},
 	{
 		mal_id: 569,
 		name: 'MAPPA',
+		key: 105,
 	},
 	{
 		mal_id: 911,
 		name: 'Passione',
+		key: 106,
 	},
 	{
 		mal_id: 1211,
 		name: 'Tokyo MX',
+		key: 107,
 	},
 	{
 		mal_id: 1325,
 		name: 'Haoliners Animation League',
+		key: 108,
 	},
 ];

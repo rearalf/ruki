@@ -1,6 +1,6 @@
 import React from 'react';
-import '../assets/styles/components/ListCard.sass';
 import { Card } from './Card';
+import '@styles/components/ListCard.sass';
 
 export const ListCard = ({ list = [] }) => {
 	return (

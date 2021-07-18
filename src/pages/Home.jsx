@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import { ListCard } from '../components/ListCard';
-import { GetSeasonAnime } from '../hooks/useGetSeasonAnime';
-import { Layout } from '../components/Layout';
-import { Header } from '../components/Header';
-import imgLoading from '../assets/static/loading.gif';
-import { ChangeTypeRated } from '../components/ChangeTypeRated';
+import { ListCard } from '@components/ListCard';
+import { GetSeasonAnime } from '@hooks/useGetSeasonAnime';
+import { Layout } from '@components/Layout';
+import { Header } from '@components/Header';
+import { ChangeTypeRated } from '@components/ChangeTypeRated';
+import imgLoading from '@static/loading.gif';
 
 export const Home = () => {
 	const {

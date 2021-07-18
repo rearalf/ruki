@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/components/NotFound.sass';
-import { Header } from '../components/Header';
+import { Header } from '@components/Header';
+import '@styles/components/NotFound.sass';
 
 export const NotFound = () => {
 	return (

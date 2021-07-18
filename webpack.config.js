@@ -2,8 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
-	entry: './src/index.js',
+	entry: [ 'react-hot-loader/patch', './src/index.js' ],
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
@@ -12,9 +13,14 @@ module.exports = {
 	resolve: {
 		extensions: [ '.js', '.jsx' ],
 		alias: {
-			'react-dom': '@hot-loader/react-dom',
-			'react-dom$': 'react-dom/profiling',
-			'scheduler/tracing': 'scheduler/tracing-profiling',
+			'@utils': path.resolve(__dirname, 'src/utils'),
+			'@services': path.resolve(__dirname, 'src/services'),
+			'@static': path.resolve(__dirname, 'src/assets/static'),
+			'@styles': path.resolve(__dirname, 'src/assets/styles'),
+			'@components': path.resolve(__dirname, 'src/components'),
+			'@pages': path.resolve(__dirname, 'src/pages'),
+			'@hooks': path.resolve(__dirname, 'src/hooks'),
+			'react-dom': '@hot-loader/react-dom'
 		},
 	},
 	module: {
@@ -48,10 +54,6 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin(),
 	],
-	performance: {
-		maxEntrypointSize: 512000,
-		maxAssetSize: 512000,
-	},
 	devServer: {
 		contentBase: path.join(__dirname, 'dist'),
 		historyApiFallback: true,

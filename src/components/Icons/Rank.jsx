@@ -4,8 +4,8 @@ export const Rank = ({ Height = 20, Width = 20, Fill = '#24292e', Title = 'Rank'
 	return (
 		<svg height={Height} viewBox="0 0 21 21" width={Width} xmlns="http://www.w3.org/2000/svg">
 			<title>{Title}</title>
-			<g fill="none" fill-rule="evenodd" transform="translate(4 4)">
-				<g stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round">
+			<g fill="none" fillRule="evenodd" transform="translate(4 4)">
+				<g stroke="#2a2e3b" strokeLinecap="round" strokeLinejoin="round">
 					<path d="m11.5 6.5h-7" />
 					<path d="m11.5 10.5h-7" />
 					<path d="m11.5 2.5h-7" />

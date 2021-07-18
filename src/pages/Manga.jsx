@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Star } from '../components/Icons/Star';
-import { Rank } from '../components/Icons/Rank';
-import { Users } from '../components/Icons/Users';
-import { useGetManga } from '../hooks/useGetManga';
-import imgLoading from '../assets/static/loading.gif';
-import { Layout } from '../components/Layout';
+import { Star } from '@components/Icons/Star';
+import { Rank } from '@components/Icons/Rank';
+import { Users } from '@components/Icons/Users';
+import { useGetManga } from '@hooks/useGetManga';
+import { Layout } from '@components/Layout';
 import { NotFound } from './NotFound';
-import { Header } from '../components/Header';
-import { MoreInfo } from '../components/MoreInfo';
-import '../assets/styles/components/Anime.sass';
+import { Header } from '@components/Header';
+import { MoreInfo } from '@components/MoreInfo';
+import imgLoading from '@static/loading.gif';
+import '@styles/components/Anime.sass';
 
 export const Manga = () => {
 	const { id } = useParams();

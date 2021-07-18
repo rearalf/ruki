@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getSearch } from '../services/getSearch';
+import { getSearch } from '@services/getSearch';
 import { filterAnimes } from './useGetSeasonAnime';
 
 export function useSearch({ title, genres = [] }){

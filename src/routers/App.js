@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { Anime } from '../pages/Anime';
-import { NotFound } from '../pages/NotFound';
-import { Manga } from '../pages/Manga';
-import { Animes } from '../pages/Animes';
-import { AnimeGenre } from '../pages/AnimeGenre';
-import { AnimeProducer } from '../pages/AnimeProducer';
-import { Search } from '../pages/Search';
-import { SeasonAnime } from '../pages/SeasonAnime';
-import { TopAnime } from '../pages/TopAnime';
+import { Home } from '@pages/Home';
+import { Anime } from '@pages/Anime';
+import { NotFound } from '@pages/NotFound';
+import { Manga } from '@pages/Manga';
+import { Animes } from '@pages/Animes';
+import { AnimeGenre } from '@pages/AnimeGenre';
+import { AnimeProducer } from '@pages/AnimeProducer';
+import { Search } from '@pages/Search';
+import { SeasonAnime } from '@pages/SeasonAnime';
+import { TopAnime } from '@pages/TopAnime';
 
 const App = () => {
 	return (

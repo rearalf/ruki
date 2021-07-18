@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Layout } from '../components/Layout';
-import { ListCard } from '../components/ListCard';
-import { Header } from '../components/Header';
-import { useGetSeasonArchive, useGetSeasonEspecific } from '../hooks/useGetSeasonAnime';
-import { ChangeTypeRated } from '../components/ChangeTypeRated';
-import { SearchIcon } from '../components/Icons/SearchIcon';
-import imgLoading from '../assets/static/loading.gif';
-import '../assets/styles/components/SeasonAnime.sass';
+import { Layout } from '@components/Layout';
+import { ListCard } from '@components/ListCard';
+import { Header } from '@components/Header';
+import { useGetSeasonArchive, useGetSeasonEspecific } from '@hooks/useGetSeasonAnime';
+import { ChangeTypeRated } from '@components/ChangeTypeRated';
+import { SearchIcon } from '@components/Icons/SearchIcon';
+import imgLoading from '@static/loading.gif';
+import '@styles/components/SeasonAnime.sass';
 
 export const SeasonAnime = () => {
 	const history = useHistory();

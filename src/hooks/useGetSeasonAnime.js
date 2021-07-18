@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getSeason } from '../services/getSeason';
-import { Object_Anime } from '../utils/models';
-import { SeasonArchive } from '../services/getSeasonArchive';
-import { getSeasonLater } from '../services/getSeasonLater';
+import { getSeason } from '@services/getSeason';
+import { Object_Anime } from '@utils/models';
+import { SeasonArchive } from '@services/getSeasonArchive';
+import { getSeasonLater } from '@services/getSeasonLater';
 
 export function GetSeasonAnime(){
 	const [ SeasonAnime, setSeasonAnime ] = useState(Object_Anime);

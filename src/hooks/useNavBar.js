@@ -1,25 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getDate } from '../utils/settings';
-import { getSearch } from '../services/getSearch';
+import { getDate } from '@utils/settings';
+import { getSearch } from '@services/getSearch';
 
 export function useNavBar(){
 	const { CurrentYear, CurrentSeason } = getDate();
-	const history = useHistory();
-	const [ SearchAnime, setSearchAnime ] = useState([]);
-	const [ Name, setName ] = useState('');
-	const [ Focus, setFocus ] = useState(false);
+	const [ toggleState, setTogglestate ] = useState(false);
 
-	const Toggle = () => {
-		const navbarCollapse = document.getElementById('navbar_collapse');
-		navbarCollapse.classList.toggle('show');
-		const navToggle = document.querySelectorAll('.btn_nav_toggle');
-		navToggle.forEach(btn => {
-			btn.classList.toggle('none_show');
-		});
+	const toggleBody = () => {
 		const body = document.querySelector('body');
-		body.classList.toggle('nav_open_noscroll');
+		if (toggleState) {
+			body.classList.add('nav_open_noscroll');
+		}
+		else {
+			body.classList.remove('nav_open_noscroll');
+		}
 	};
+
+	useEffect(
+		() => {
+			toggleBody();
+		},
+		[ toggleState ],
+	);
 
 	const handleDropDown = () => {
 		const dropDown = document.getElementById('navbarDropdown');
@@ -27,6 +30,21 @@ export function useNavBar(){
 		const svgDropDown = document.getElementById('svgDropDown').firstChild;
 		svgDropDown.classList.toggle('turn');
 	};
+
+	return {
+		CurrentYear,
+		CurrentSeason,
+		handleDropDown,
+		toggleState,
+		setTogglestate,
+	};
+}
+
+export const useNavSearch = () => {
+	const history = useHistory();
+	const [ SearchAnime, setSearchAnime ] = useState([]);
+	const [ Name, setName ] = useState('');
+	const [ Focus, setFocus ] = useState(false);
 
 	const handleSearchInput = ({ target }) => {
 		const value = target.value;
@@ -64,17 +82,13 @@ export function useNavBar(){
 	return {
 		isButtonDisabled,
 		handleSearch,
-		handleSearchInput,
 		Focus,
 		setFocus,
-		SearchAnime,
 		Name,
-		CurrentYear,
-		CurrentSeason,
-		Toggle,
-		handleDropDown,
+		handleSearchInput,
+		SearchAnime,
 		setSearchAnime,
 		handleOnBlur,
 		handleOnFocus,
 	};
-}
+};

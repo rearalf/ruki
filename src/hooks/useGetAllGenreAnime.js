@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getAllGenresAnime } from '../services/getAllGenresAnime';
-import { Objec_Genres } from '../utils/models';
+import { getAllGenresAnime } from '@services/getAllGenresAnime';
+import { Objec_Genres } from '@utils/models';
 import { filterAnimes } from './useGetSeasonAnime';
 import { useNearScreen } from './useNearScreen';
 import debounce from 'just-debounce-it';

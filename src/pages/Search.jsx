@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Layout } from '../components/Layout';
-import { useSearch } from '../hooks/useSearch';
-import { ListCard } from '../components/ListCard';
-import { Genres } from '../utils/models';
-import { Header } from '../components/Header';
-import { MoreInfo } from '../components/MoreInfo';
-import '../assets/styles/components/SearchPage.sass';
-import { ChangeTypeRated } from '../components/ChangeTypeRated';
+import { Layout } from '@components/Layout';
+import { useSearch } from '@hooks/useSearch';
+import { ListCard } from '@components/ListCard';
+import { Genres } from '@utils/models';
+import { Header } from '@components/Header';
+import { MoreInfo } from '@components/MoreInfo';
+import { ChangeTypeRated } from '@components/ChangeTypeRated';
+import '@styles/components/SearchPage.sass';
 
 export const Search = () => {
 	const { name } = useParams();

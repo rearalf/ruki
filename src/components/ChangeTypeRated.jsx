@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/components/ChangeTypeRated.sass';
+import '@styles/components/ChangeTypeRated.sass';
 
 export const ChangeTypeRated = ({ handleChangeOption, Option, handleChangeRated, Rated }) => (
 	<div className="formCheck">

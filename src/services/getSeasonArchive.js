@@ -1,4 +1,4 @@
-import { API_URL } from '../utils/settings';
+import { API_URL } from '@utils/settings';
 
 const fromApiResponseToSeason = apiResponse => {
 	const { archive } = apiResponse;

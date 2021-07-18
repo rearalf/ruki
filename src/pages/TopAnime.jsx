@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { Header } from '../components/Header';
-import { Layout } from '../components/Layout';
-import { useGetTop } from '../hooks/useGetTop';
-import { ListCard } from '../components/ListCard';
-import imgLoading from '../assets/static/loading.gif';
+import { Header } from '@components/Header';
+import { Layout } from '@components/Layout';
+import { useGetTop } from '@hooks/useGetTop';
+import { ListCard } from '@components/ListCard';
+import imgLoading from '@static/loading.gif';
 
 export const TopAnime = () => {
 	const { Top, Loading, Option, handleChangeOption, loadingNextPage, externalRef } = useGetTop();
