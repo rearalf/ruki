@@ -1,17 +1,56 @@
+@import ../variables
 .formCheck
     display: flex
-    gap: 1rem
     flex-direction: column
-    & .formInputCheck
+    h2
+        margin-bottom: 1rem
+    .inputBasic
+        margin-bottom: 1rem
+    .formInputCheck
         display: flex
-        gap: .5rem
         align-items: center
         justify-content: center
-    & h4
-        margin-top: .5rem
-@media screen and ( min-width: 600px )
+        .checkInput[type="checkbox"]
+            width: 0
+            height: 0
+            visibility: hidden
+        label
+            cursor: pointer
+        .formCheckLabel
+            width: 50px
+            height: 25px
+            position: relative
+            border: 1px solid $color-btn-text
+            border-radius: 50px
+            transition: .5s
+            margin-right: 10px
+            &::after
+                content: 'Off'
+                font-size: 12px
+                color: $color-bg-primary
+                text-align: center
+                padding-top: 2px
+                width: 20px
+                height: 19px
+                background-color: $color-btn-text
+                border-radius: 50%
+                position: absolute
+                top: 1px
+                left: 2px
+                transition: .5s
+        .checkInput[type="checkbox"]:checked + .formCheckLabel::after
+            left: calc( 100% - 2px)
+            transform: translateX(-100%)
+            content: 'On'
+        .formCheckLabel:active:after
+            width: 20px
+
+@media screen and (min-width:600px)
     .formCheck
         flex-direction: row
         align-items: center
-        & h4
-            margin-top: 0
+        gap: 1rem
+        h2
+            margin-bottom: 0
+        .inputBasic
+            margin-bottom: 0

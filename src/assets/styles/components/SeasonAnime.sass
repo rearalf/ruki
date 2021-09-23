@@ -3,17 +3,21 @@
 .seasonsHeaders
     & .changeParameters
         display: flex
-        justify-content: space-between
         flex-direction: column
-        gap: .5rem
         & .seasonsForm
             display: flex
-            gap: 1.5rem
             flex-direction: column
-        @media screen and ( min-width: 600px )
+            margin-bottom: 25px
+            .inputBasic
+                margin-bottom: 25px
+        @media screen and ( min-width: 900px )
             & .seasonsForm
                 flex-direction: row
                 align-items: center
+                margin-bottom: 0
+                gap: 1rem
+                .inputBasic
+                    margin-bottom: 0
     & .btnSeasonForm
         border: $border
         padding: 10px 15px
@@ -25,6 +29,13 @@
             & .svg
                 & g
                     stroke: $color-text-link-hover
-    @media screen and ( min-width: 850px )
+    @media screen and ( min-width: 478px )
         & .changeParameters
             flex-direction: row
+            justify-content: space-between
+            & .seasonsForm
+                margin-bottom: 0
+    @media screen and ( min-width: 900px )
+        & .changeParameters
+            flex-direction: row
+            justify-content: space-between

@@ -3,7 +3,7 @@ import '@styles/components/ChangeTypeRated.sass';
 
 export const ChangeTypeRated = ({ handleChangeOption, Option, handleChangeRated, Rated }) => (
 	<div className="formCheck">
-		<h4>Type and rated</h4>
+		<h2>Type and rated</h2>
 		<select
 			className="inputBasic"
 			name="seasons"
@@ -26,9 +26,8 @@ export const ChangeTypeRated = ({ handleChangeOption, Option, handleChangeRated,
 				onChange={handleChangeRated}
 				value={Rated}
 			/>
-			<label className="form-check-label" htmlFor="ratedInputRadio">
-				R18+
-			</label>
+			<label className="formCheckLabel" htmlFor="ratedInputRadio" />
+			<label htmlFor="ratedInputRadio">R18+</label>
 		</div>
 	</div>
 );
